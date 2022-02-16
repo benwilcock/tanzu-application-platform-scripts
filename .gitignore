@@ -1,0 +1,8 @@
+.DS_Store
+tanzu-cluster-essentials
+tanzu-cli
+.vscode/settings.json
+**/tap-env.sh
+**/tap-env.ps1
+**/*tap-values.yml
+**/*.yaml

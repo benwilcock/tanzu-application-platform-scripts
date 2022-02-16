@@ -1,0 +1,15 @@
+# kubectl apply -f api-portal.yml
+kind: HTTPProxy
+apiVersion:  projectcontour.io/v1
+metadata:
+  name: api-portal-external
+  namespace: api-portal
+spec:
+  routes:
+  - conditions:
+    - prefix: /
+    services:
+    - name: api-portal-server
+      port: 8080
+  virtualhost:
+    fqdn: api-portal.benwilcock.io
