@@ -11,12 +11,15 @@ export APPS_DOMAIN="apps.${ENVOY}.nip.io"
 # Add some Workloads to TAP
 ##################################
 
- # Official Sample Workload:
-tanzu apps workload create tanzu-java-web-app-sample \
+# Official Sample Workload:
+tanzu apps workload create tanzu-java-web-app \
 --git-repo https://github.com/sample-accelerators/tanzu-java-web-app \
 --git-branch main \
 --type web \
---label app.kubernetes.io/part-of=tanzu-java-web-app-sample \
+--label app.kubernetes.io/part-of=tanzu-java-web-app \
+--label tanzu.app.live.view=true \
+--label tanzu.app.live.view.application.name=tanzu-java-web-app \
+--namespace default \
 --yes
 
 # Spring Boot Admin Workload

@@ -3,5 +3,5 @@ tanzu-cluster-essentials
 tanzu-cli
 .vscode/settings.json
 **/tap-env.sh
-**/tap-env.ps1
 **/*.yaml
+**/*secret*
