@@ -3,6 +3,8 @@
 # Set up the environment variables
 source tap-env.sh
 
+sudo apt install jq xclip httpie
+
 # Set env var TANZU_CLI_NO_INIT to true to assure the local downloaded versions of the CLI core and plug-ins are installed.
 export TANZU_CLI_NO_INIT=true 
 # export TAP_INSTALL_DIR= # e.g. $(pwd)

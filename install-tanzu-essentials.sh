@@ -34,7 +34,7 @@ sudo cp $TAP_INSTALL_DIR/tanzu-cluster-essentials/kapp /usr/local/bin/kapp
 echo "\nInstalling Tanzu Cluster Essentials into the cluster...\n"
 cd $TAP_INSTALL_DIR/tanzu-cluster-essentials
 export INSTALL_BUNDLE=registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:82dfaf70656b54dcba0d4def85ccae1578ff27054e7533d08320244af7fb0343
-sh install.sh
+./install.sh
 
 # View the cluster, you will see secretgen and kapp have been installed
 kubectl get all --all-namespaces
