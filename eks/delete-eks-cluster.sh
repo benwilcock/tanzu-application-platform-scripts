@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 # Set up the environment variables
-source tap-env.sh
+source ../tap-env.sh
 
 # Check your env variables have been set
 echo $(env | grep -E '(REGISTRY|NAMESPACE|AWS|INSTALL)')
