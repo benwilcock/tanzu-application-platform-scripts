@@ -6,5 +6,7 @@ Go to https://console.cloudgate.vmware.com/ui/#/login
 
 Obtain Temporary AWS credentials for 'PowerUser' >> Add these to tap-env.sh
 
-Run create-eks-cluster.sh
+Assuming you've installed Tanzu CLI...
+
+Run ./eks/create-eks-cluster.sh
 Run ./eks/install-tap-eks.sh

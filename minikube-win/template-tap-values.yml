@@ -1,0 +1,46 @@
+profile: light
+ceip_policy_disclosed: true # Installation fails if this is set to 'false'
+
+buildservice:
+  kp_default_repository: "REGISTRY_SERVER/my-mini-tap/build-service"
+  kp_default_repository_username: "REGISTRY_USERNAME"
+  kp_default_repository_password: "REGISTRY_PASSWORD"
+  tanzunet_username: "INSTALL_REGISTRY_USERNAME"
+  tanzunet_password: "INSTALL_REGISTRY_PASSWORD"
+  enable_automatic_dependency_updates: true
+
+supply_chain: basic
+
+ootb_supply_chain_basic:
+  registry:
+    server: "REGISTRY_SERVER"
+    repository: "my-mini-tap"
+  gitops:
+    ssh_secret: ""
+
+tap_gui:
+  service_type: ClusterIP
+  ingressEnabled: "true"
+  ingressDomain: "made-up-name.net"
+  app_config:
+    app:
+      baseUrl: http://tap-gui.made-up-name.net
+    catalog:
+      locations:
+        - type: url
+          target: https://github.com/benwilcock/tap-gui-blank-catalog/blob/main/catalog-info.yaml
+    backend:
+      baseUrl: http://tap-gui.made-up-name.net
+      cors:
+        origin: http://tap-gui.made-up-name.net
+
+metadata_store:
+  app_service_type: LoadBalancer # (optional) Defaults to LoadBalancer. Change to NodePort for distributions that don't support LoadBalancer
+
+contour:
+  envoy:
+    service:
+      type: LoadBalancer
+
+cnrs:
+  domain_name: "apps.made-up-name.net"
