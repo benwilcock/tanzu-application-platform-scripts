@@ -4,4 +4,5 @@ tanzu-cli
 .vscode/settings.json
 **/tap-env.sh
 **/tap-env.ps1
-**/*.yaml
+minikube-tap-values.yml
+eks-tap-values.yml

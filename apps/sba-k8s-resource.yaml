@@ -1,0 +1,9 @@
+apiVersion: accelerator.apps.tanzu.vmware.com/v1alpha1
+kind: Accelerator
+metadata:
+  name: spring-boot-admin
+spec:
+  git:
+    url: https://github.com/benwilcock/spring-boot-admin
+    ref:
+      branch: main
