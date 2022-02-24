@@ -2,7 +2,7 @@ profile: light
 ceip_policy_disclosed: true # Installation fails if this is set to 'false'
 
 buildservice:
-  kp_default_repository: "REGISTRY_SERVER/my-mini-tap/build-service"
+  kp_default_repository: "REGISTRY_SERVER/win-mini-tap/build-service"
   kp_default_repository_username: "REGISTRY_USERNAME"
   kp_default_repository_password: "REGISTRY_PASSWORD"
   tanzunet_username: "INSTALL_REGISTRY_USERNAME"
@@ -14,7 +14,7 @@ supply_chain: basic
 ootb_supply_chain_basic:
   registry:
     server: "REGISTRY_SERVER"
-    repository: "my-mini-tap"
+    repository: "win-mini-tap"
   gitops:
     ssh_secret: ""
 
