@@ -7,6 +7,11 @@
 # TAP Works with Kubernetes  1.20, 1.21, or 1.22
 minikube start --cpus=8 --memory=16g --kubernetes-version='1.22.6'
 
+# To see your Minikube setup, use:
+minikube profile list
+# VM Driver: hyperv (VMware also works?)
+# Runtime: docker
+
 # Find the IP address for Minikube services (supplied by tunnel)
 minikube ip
 
