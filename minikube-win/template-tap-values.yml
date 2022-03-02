@@ -2,9 +2,9 @@ profile: light
 ceip_policy_disclosed: true # Installation fails if this is set to 'false'
 
 buildservice:
-  kp_default_repository: "REGISTRY_SERVER/win-mini-tap/build-service"
-  kp_default_repository_username: "REGISTRY_USERNAME"
-  kp_default_repository_password: "REGISTRY_PASSWORD"
+  kp_default_repository: "index.docker.io/DOCKER_USERNAME/build-service"
+  kp_default_repository_username: "DOCKER_USERNAME"
+  kp_default_repository_password: "DOCKER_PASSWORD"
   tanzunet_username: "INSTALL_REGISTRY_USERNAME"
   tanzunet_password: "INSTALL_REGISTRY_PASSWORD"
   enable_automatic_dependency_updates: true
@@ -13,8 +13,8 @@ supply_chain: basic
 
 ootb_supply_chain_basic:
   registry:
-    server: "REGISTRY_SERVER"
-    repository: "win-mini-tap"
+    server: "index.docker.io"
+    repository: "DOCKER_USERNAME"
   gitops:
     ssh_secret: ""
 
