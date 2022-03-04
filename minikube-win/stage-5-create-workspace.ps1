@@ -6,7 +6,7 @@ $yes = New-Object System.Management.Automation.Host.ChoiceDescription "&Yes","De
 $no = New-Object System.Management.Automation.Host.ChoiceDescription "&No","Description."
 $options = [System.Management.Automation.Host.ChoiceDescription[]]($yes, $no)
 $title = "Stage 5 - Create a Developer Workspace" 
-$message = "This script creates a developer workspace for you on TAP. Continue?"
+$message = "This script creates a developer workspace for you on TAP and adds your registry-credentials for $Env:REPOSITORY_TYPE. Continue?"
 $result = $host.ui.PromptForChoice($title, $message, $options, 1)
 switch ($result) {
   1{

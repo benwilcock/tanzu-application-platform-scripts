@@ -8,7 +8,7 @@ $yes = New-Object System.Management.Automation.Host.ChoiceDescription "&Yes","De
 $no = New-Object System.Management.Automation.Host.ChoiceDescription "&No","Description."
 $options = [System.Management.Automation.Host.ChoiceDescription[]]($yes, $no)
 $title = "Stage 3 - Install Tanzu Cluster Essentials" 
-$message = "This script installs the Tanzu Cluster Essentials components required by TAP. Continue?"
+$message = "This script installs the Tanzu Cluster Essentials components required by TAP. If you use TKG v1.5.1 or later you can skip this step. Continue?"
 $result = $host.ui.PromptForChoice($title, $message, $options, 1)
 switch ($result) {
   1{
