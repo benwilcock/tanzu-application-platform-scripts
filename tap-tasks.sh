@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# To see your Minikube setup, use:
+minikube profile list
+# VM Driver: hyperv (VMware also works?)
+# Runtime: docker
+
 tanzu package installed list -A # List the status of all TAP's sub components
 
 # ************ Manual Step **************

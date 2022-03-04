@@ -1,23 +1,12 @@
-# Tanzu Cluster Essentials & TAP Environment Variables
-$Env:TAP_VERSION = "1.0.1"
+# Tanzu Application Platform (TAP) - Installation Environment Variables
 
-# Installation registry - contains TAP images
-$Env:INSTALL_BUNDLE = "registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:82dfaf70656b54dcba0d4def85ccae1578ff27054e7533d08320244af7fb0343"
+# TAP Installation docker image registry - contains the TAP container images for installation and runtime use
 $Env:INSTALL_REGISTRY_HOSTNAME = "registry.tanzu.vmware.com"
-$Env:INSTALL_REGISTRY_USERNAME = "" # "tanzu-username"
-$Env:INSTALL_REGISTRY_PASSWORD = "" # "tanzupassword"
+$Env:INSTALL_REGISTRY_USERNAME = "" # "tanzu-net-username"
+$Env:INSTALL_REGISTRY_PASSWORD = "" # "tanzu-net-password"
 
-# Tanzu CLI Installation Environment Variables
-$Env:TANZU_CLI_NO_INIT = "true"
+# Built application image container registry (holds supply-chain container images)
+$Env:DOCKER_SERVER = "https://index.docker.io/v1/" # "or harbor.made-up-name.io"
+$Env:DOCKER_USERNAME = "" # "your-dockerhub-username"
+$Env:DOCKER_PASSWORD = "" # "your-dockerhub-password"
 
-# TAP Installation Environment Variables
-# Code and supply chain registry
-$Env:REGISTRY_SERVER = "" # "harbor.made-up-name.io" DockerHub ??
-$Env:REGISTRY_USERNAME = "" # "your-username"
-$Env:REGISTRY_PASSWORD = "" # "your-password"
-$Env:TAP_NAMESPACE = "tap-install"
-$Env:TAP_DEV_NAMESPACE = "default"
-$Env:TAP_INSTALL_DIR = "."
-
-# Print all variables to the screen
-dir env:
