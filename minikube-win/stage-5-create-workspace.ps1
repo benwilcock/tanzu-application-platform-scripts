@@ -36,4 +36,4 @@ curl.exe -o serviceaccounts.yml https://raw.githubusercontent.com/benwilcock/tan
 # Add the necessary RBAC Roles, Accounts, Bindings etc... 
 kubectl -n $env:TAP_DEV_NAMESPACE apply -f "serviceaccounts.yml" 
 
-Write-Host "Next, run the stage-5.ps1 script." -ForegroundColor DarkGreen -BackgroundColor Black
+Write-Host "Next, run the stage-6 script." -ForegroundColor DarkGreen -BackgroundColor Black

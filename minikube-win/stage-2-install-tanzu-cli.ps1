@@ -44,4 +44,4 @@ tanzu plugin install --local cli all
 tanzu plugin list
 
 Write-Host "Check above that package, secret, apps, services, and accelerator plugins are all available to you." -ForegroundColor DarkGreen -BackgroundColor Black
-Write-Host "Next, run the stage-3.ps1 script." -ForegroundColor DarkGreen -BackgroundColor Black
+Write-Host "Next, run the stage-3 script." -ForegroundColor DarkGreen -BackgroundColor Black

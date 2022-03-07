@@ -3,10 +3,10 @@
 ################################################################
 
 # Choose where Built container images will go...
-$Env:REPOSITORY_TYPE = "harbor" # One of "dockerhub" "harbor" "local"
+$Env:REPOSITORY_TYPE = "dockerhub" # One of "dockerhub" "harbor" "local"
 
 # Specify the version of TAP to install
-$Env:TAP_VERSION = "1.1.0-build.5" # "1.0.1" "1.0.2-build.8"
+$Env:TAP_VERSION = "1.0.2-build.8" # "1.1.0-build.5" # "1.0.1" "1.0.2-build.8"
 
 # Ask for permission to proceed.
 $yes = New-Object System.Management.Automation.Host.ChoiceDescription "&Yes","Description."
@@ -54,7 +54,7 @@ tanzu package available list --namespace $env:TAP_NAMESPACE # Do you see a big l
 
 if ( $Env:REPOSITORY_TYPE -eq "dockerhub" )
 {
-  Write-Host "DockerHub FREE has user pull limits. You may struggle to install TAP!" -ForegroundColor Red -BackgroundColor Black
+  Write-Host "DockerHub FREE has user pull limits. You may struggle to install TAP!" -ForegroundColor Blue -BackgroundColor Black
 }
 
 # Install the TAP packages to Kubernetes
@@ -71,7 +71,7 @@ $message = "Would you like to watch the installation of TAP as it progresses?"
 $result = $host.ui.PromptForChoice($title, $message, $options, 1)
 switch ($result) {
   0{
-    while (1) {clear; tanzu package installed list -A; Write-Host "When ALL packages have a STATUS of 'Reconcile Succeeded', press Ctrl-C and run the stage-5.ps1 script." -ForegroundColor DarkGreen -BackgroundColor Black; sleep 10}
+    while (1) {clear; tanzu package installed list -A; Write-Host "When ALL packages have a STATUS of 'Reconcile Succeeded', press Ctrl-C and run the stage-5 script." -ForegroundColor DarkGreen -BackgroundColor Black; sleep 10}
   }
   1{
     Exit

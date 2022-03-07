@@ -26,7 +26,7 @@ minikube start --cpus='8' --memory='16g' --disk-size='80000mb' --kubernetes-vers
 # Find the IP address for Minikube
 $env:minikubeip = minikube ip
 Write-Host "Next, I'll open Notepad so you can add the following line:" -ForegroundColor DarkGreen -BackgroundColor Black
-Write-Host "$env:minikubeip tap-gui.made-up-name.net tanzu-java-web-app.default.apps.made-up-name.net" -ForegroundColor Red -BackgroundColor Black
+Write-Host "$env:minikubeip tap-gui.made-up-name.net tanzu-java-web-app.default.apps.made-up-name.net" -ForegroundColor Blue -BackgroundColor Black
 
 # Opening the hosts file in Notepad as Admin user...
 Start-Process notepad -Verb runas "c:\Windows\System32\Drivers\etc\hosts"
