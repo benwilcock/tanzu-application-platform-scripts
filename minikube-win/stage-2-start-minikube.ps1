@@ -7,7 +7,7 @@
 $yes = New-Object System.Management.Automation.Host.ChoiceDescription "&Yes","Description."
 $no = New-Object System.Management.Automation.Host.ChoiceDescription "&No","Description."
 $options = [System.Management.Automation.Host.ChoiceDescription[]]($yes, $no)
-$title = "Stage 1 - Starting Minikube" 
+$title = "Stage 2 - Starting Minikube" 
 $message = "This script starts Minikube, shows the Minikube IP, and opens your hosts file for editing in Notepad. Continue?"
 $result = $host.ui.PromptForChoice($title, $message, $options, 1)
 switch ($result) {

@@ -7,7 +7,7 @@
 $yes = New-Object System.Management.Automation.Host.ChoiceDescription "&Yes","Description."
 $no = New-Object System.Management.Automation.Host.ChoiceDescription "&No","Description."
 $options = [System.Management.Automation.Host.ChoiceDescription[]]($yes, $no)
-$title = "Stage 1 - Installing the Tanzu CLI" 
+$title = "Stage 2 - Installing the Tanzu CLI" 
 $message = "This script installs the Tanzu CLI from the ZIP you downloaded to your Downloads directory and installs the Tanzu CLI plugins required by TAP. If you already have the correct Tanzu CLI and plugins installed you can skip this step. Continue?"
 $result = $host.ui.PromptForChoice($title, $message, $options, 1)
 switch ($result) {
