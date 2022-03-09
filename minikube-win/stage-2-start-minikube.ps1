@@ -17,8 +17,7 @@ switch ($result) {
 }
 
 # TAP Works with Kubernetes  1.20, 1.21, or 1.22
-minikube start --cpus='8' --memory='16g' --disk-size='80000mb' --kubernetes-version='1.22.6' #--insecure-registry "10.0.0.0/24"
-#minikube addons enable registry
+minikube start --kubernetes-version='1.22.6' --cpus='8'  
 
 # Add a host entry for each app behind the tunnel (Windows 8 - 10)
 # When Notepad opens, add to the hosts file...
