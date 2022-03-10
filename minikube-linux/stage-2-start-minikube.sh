@@ -13,7 +13,7 @@ source ./helper.sh
 
 # TAP Works with Kubernetes  1.20, 1.21, or 1.22
 yes_or_no "$( echo -e ${GREEN}"Starting Minikube for you. Ready?"${NC})" \
-  && minikube start --kubernetes-version='1.22.6' --cpus='8' 
+  && minikube start --kubernetes-version='1.22.6' --cpus='8'
 
 sleep 3
 
@@ -29,6 +29,6 @@ yes_or_no "$( echo -e ${WHITE}"Opening /etc/hosts for you in Nano (needs sudo). 
 sleep 3
 
 # Starting the Minikube Tunnel
-echo -e "${GREEN}Starting the Minikube Tunnel.${NC}"
+echo -e "${GREEN}Starting the Minikube Tunnel (needs sudo).${NC}"
 yes_or_no "$( echo -e ${WHITE}"You must leave the Minikube Tunnel running for TAP to operate. Continue?"${NC})" \
   && minikube tunnel
