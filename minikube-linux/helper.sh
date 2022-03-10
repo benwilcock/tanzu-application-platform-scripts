@@ -34,10 +34,9 @@ function yes_or_quit {
 function check_file {
     FILE=$1
     if [ -f $FILE ]; then
-        echo -e "${GREEN}File '${FILE}' is OK.${NC}";
         return 0;
     else 
-        echo -e "${RED}File '${FILE}' is missing!.${NC}"
+        echo -e "${RED}File '${FILE}' is missing! Create one using the template supplied.${NC}"
         exit
     fi
 }
@@ -69,5 +68,5 @@ check_file "secret-${REPOSITORY_TYPE}-tap-values.yml"
 # Make sure you know DockerHub has its limits.
 if [ "$REPOSITORY_TYPE" = "dockerhub" ]
   then
-    echo -e "${RED}WARNING:${NC} DockerHub has limits for FREE accounts. You may struggle to install TAP or get issues later."
+    echo -e "${NC}DockerHub has limits for FREE accounts. You may struggle to install TAP or get issues later."
 fi

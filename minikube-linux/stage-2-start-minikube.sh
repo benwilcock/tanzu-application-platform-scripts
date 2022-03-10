@@ -12,8 +12,8 @@ echo -e "${BLUE}Stage 2 - Setup Your Minikube Cluster${NC}"
 source ./helper.sh
 
 # TAP Works with Kubernetes  1.20, 1.21, or 1.22
-yes_or_no "$( echo -e ${GREEN}"Starting Minikube. OK?"${NC})" \
-  && minikube start --kubernetes-version='1.22.6' --cpus='8' --driver=docker
+yes_or_no "$( echo -e ${GREEN}"Starting Minikube for you. Ready?"${NC})" \
+  && minikube start --kubernetes-version='1.22.6' --cpus='8' 
 
 sleep 3
 

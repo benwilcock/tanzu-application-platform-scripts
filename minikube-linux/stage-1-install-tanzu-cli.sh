@@ -21,7 +21,7 @@ function install_cli {
   check_file ${CLI_FILE}
 
   mkdir tanzu-cli
-  echo -e "${GREEN}Extracting the files from the archive.${NC}"
+  echo -e "${GREEN}Extracting the install files from the archive.${NC}"
   tar -xvf $CLI_FILE -C ./tanzu-cli
   cd tanzu-cli
 
@@ -30,13 +30,6 @@ function install_cli {
 
   # Install the Tanzu CLI Plugins
   tanzu plugin install --local cli all
-
-  # Adding the PATH entry
-  # PATH_ADD="/usr/local/bin/tanzu;"
-  # echo -e "${GREEN}You need to add '${ENVOY} ${HOSTS}' to your /etc/hosts file${NC}"
-  # echo ${ENVOY} ${HOSTS} | xclip -selection c
-  # yes_or_no "$( echo -e ${WHITE}"Opening /etc/hosts for you in Nano (needs sudo). Use Ctrl+Shift+V to add the new line. Ctrl-X to exit Nano. OK?"${NC})" \
-  #   && sudo nano /etc/hosts
 
   # Tidy up the extracted folder
   cd ..
@@ -52,7 +45,7 @@ tanzu version
 tanzu plugin list
 
 # Continue with the install?
-yes_or_quit "$( echo -e "${GREEN}Do the plugins: ${WHITE}package, secret, apps, services, and accelerator${GREEN} have the status 'installed' in the list above?${NC}" )"
+yes_or_quit "$( echo -e "${GREEN}In the list above do the plugins: ${WHITE}package, secret, apps, services, and accelerator${GREEN} have the status 'installed'?${NC}" )"
 
 
 echo -e "${GREEN}Next, run the stage-2 script.${NC}"
