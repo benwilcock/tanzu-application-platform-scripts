@@ -4,10 +4,10 @@
 # Deploy (Run) a Developer workload on TAP                    #
 ################################################################
 
-echo -e "${BLUE}Stage 6 - Run A Developer Workload on TAP${NC}" 
-
 # Source the environment variables
 source ./helper.sh
+
+echo -e "${BLUE}Stage 6 - Run A Developer Workload on TAP${NC}" 
 
 # Run the workload?
 yes_or_quit "$( echo -e "This script creates a developer workload for you. It can take a while. Continue?" )"

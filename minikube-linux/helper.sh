@@ -44,16 +44,16 @@ function check_file {
 ############## Common Environment Variables #######################
 
 # Specify the version of TAP you wish to install
-export TAP_VERSION="1.0.2" # "1.1.0-build.5" # "1.0.1" "1.0.2-build.8"
+export TAP_VERSION="1.1.0-build.9" #"1.0.2" # "1.1.0-build.5" # "1.0.1" "1.0.2-build.8"
 
 # Specify the type of Docker repository service where your images will go...
-export REPOSITORY_TYPE="dockerhub" # One of "dockerhub" "harbor"
+export REPOSITORY_TYPE="harbor" # One of "dockerhub" "harbor"
 
 # Specify the location of the Tanzu Network container registry containing the TAP images (usually fixed)
 export INSTALL_REGISTRY_HOSTNAME="registry.tanzu.vmware.com" 
 
 # Specify the location of the Docker Image Registry (e.g. DockerHub, Harbor, GCR, etc.)
-export DOCKER_SERVER="https://index.docker.io/v1/" # Format is different for Harbor, GCR, etc!
+export DOCKER_SERVER="harbor.ryanbaker.io" #"https://index.docker.io/v1/" # Format is different for Harbor, GCR, etc!
 
 # Specify the Kubernetes namespace to use as your developer workspace.
 export TAP_DEV_NAMESPACE="default" 
@@ -64,6 +64,9 @@ export TAP_DEV_NAMESPACE="default"
 # Make sure you add you credentials to  the file:
 check_file "secret-${REPOSITORY_TYPE}-tap-env.sh"
 check_file "secret-${REPOSITORY_TYPE}-tap-values.yml"
+
+# Bringing in additional ENV properties
+source ./secret-${REPOSITORY_TYPE}-tap-env.sh
 
 # Make sure you know DockerHub has its limits.
 if [ "$REPOSITORY_TYPE" = "dockerhub" ]
