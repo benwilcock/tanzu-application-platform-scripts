@@ -3,11 +3,7 @@ tanzu-cluster-essentials
 tanzu-cli
 .vscode/settings.json
 **/tap-env.sh
-<<<<<<< HEAD
 **/*.yaml
 **/*secret*
-=======
-**/tap-env.ps1
-minikube-tap-values.yml
-eks-tap-values.yml
->>>>>>> 037499471a3d3335b5d7b5a185b3ea7c382e4572
+**/tanzu-cluster-essentials*
+**/tanzu-framework*

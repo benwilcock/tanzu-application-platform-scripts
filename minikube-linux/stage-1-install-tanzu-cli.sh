@@ -4,44 +4,55 @@
 # You only need to do this if you don't have Tanzu CLI already #
 ################################################################
 
-$yes = New-Object System.Management.Automation.Host.ChoiceDescription "&Yes","Description."
-$no = New-Object System.Management.Automation.Host.ChoiceDescription "&No","Description."
-$options = [System.Management.Automation.Host.ChoiceDescription[]]($yes, $no)
-$title = "Stage 2 - Installing the Tanzu CLI" 
-$message = "This script installs the Tanzu CLI from the ZIP you downloaded to your Downloads directory and installs the Tanzu CLI plugins required by TAP. If you already have the correct Tanzu CLI and plugins installed you can skip this step. Continue?"
-$result = $host.ui.PromptForChoice($title, $message, $options, 1)
-switch ($result) {
-  1{
-    Exit
-  }
+# Describe this stage
+echo -e "${BLUE}Stage 1 - Installing the Tanzu CLI${NC}" 
+echo -e "${GREEN}This script installs the Tanzu CLI and the Tanzu CLI plugins required by TAP. If you already have the correct Tanzu CLI and plugins installed you can skip this step. Continue?${NC}"
+
+# Source common functions & variables
+source ./helper.sh
+
+function install_cli {
+
+  # Set env var TANZU_CLI_NO_INIT to true to insure the local downloaded versions of the CLI core and plug-ins are installed.
+  export TANZU_CLI_NO_INIT=true 
+
+  # Check the download is ready
+  export CLI_FILE=tanzu-framework-linux-amd64.tar
+  check_file ${CLI_FILE}
+
+  mkdir tanzu-cli
+  echo -e "${GREEN}Extracting the files from the archive.${NC}"
+  tar -xvf $CLI_FILE -C ./tanzu-cli
+  cd tanzu-cli
+
+  echo -e "${GREEN}Installing the Tanzu CLI (needs sudo).${NC}"
+  sudo install cli/core/v0.11.1/tanzu-core-linux_amd64 /usr/local/bin/tanzu
+
+  # Install the Tanzu CLI Plugins
+  tanzu plugin install --local cli all
+
+  # Adding the PATH entry
+  # PATH_ADD="/usr/local/bin/tanzu;"
+  # echo -e "${GREEN}You need to add '${ENVOY} ${HOSTS}' to your /etc/hosts file${NC}"
+  # echo ${ENVOY} ${HOSTS} | xclip -selection c
+  # yes_or_no "$( echo -e ${WHITE}"Opening /etc/hosts for you in Nano (needs sudo). Use Ctrl+Shift+V to add the new line. Ctrl-X to exit Nano. OK?"${NC})" \
+  #   && sudo nano /etc/hosts
+
+  # Tidy up the extracted folder
+  cd ..
+  rm -rf tanzu-cli
 }
 
-# Move to the downloads directory
-cd "C:\Users\$env:USERNAME\Downloads\"
+install_cli
 
-# Extract the zip
-Expand-Archive .\tanzu-framework-windows-amd64.zip 
-
-# Move to the extracted Tanzu CLI directory
-cd tanzu-framework-windows-amd64 
-
-# Create a new home for the Tanzu CLI in "Program Files"
-mkdir "C:\Program Files\tanzu" 
-
-# Copy the Tanzu CLI tool to Program Files
-cp "cli\core\v0.11.1\tanzu-core-windows_amd64.exe" "C:\Program Files\tanzu\tanzu.exe" 
-
-# Check the Tanzu CLI Tool is on the path and working correctly
+# Check the correct version is now installed
 tanzu version
 
-# Get ready to add plugins to the tool
-$Env:TANZU_CLI_NO_INIT = "true" 
-
-# Install the Plugins required to install TAP
-tanzu plugin install --local cli all 
-
-# List the Plugins, checking that package, secret, apps, services, and accelerator are available to you.
+# Check the correct version is now installed
 tanzu plugin list
 
-Write-Host "Check above that package, secret, apps, services, and accelerator plugins are all available to you." -ForegroundColor DarkGreen -BackgroundColor Black
-Write-Host "Next, run the stage-2 script." -ForegroundColor DarkGreen -BackgroundColor Black
+# Continue with the install?
+yes_or_quit "$( echo -e "${GREEN}Do the plugins: ${WHITE}package, secret, apps, services, and accelerator${GREEN} have the status 'installed' in the list above?${NC}" )"
+
+
+echo -e "${GREEN}Next, run the stage-2 script.${NC}"

@@ -1,0 +1,58 @@
+profile: full
+ceip_policy_disclosed: true # Installation fails if this is set to 'false'
+
+buildservice:
+  kp_default_repository: "harbor.ryanbaker.io/bens-tap/build-service"
+  kp_default_repository_username: "wilcockb"
+  kp_default_repository_password: "Cj7ObHx7"
+  tanzunet_username: "wilcockb@vmware.com"
+  tanzunet_password: "49vTqj!SXc"
+  descriptor_name: "tap-1.0.0-full" # <<<<< Check this!
+  enable_automatic_dependency_updates: true
+
+supply_chain: basic
+
+ootb_supply_chain_basic:
+  registry:
+    server: "harbor.ryanbaker.io"
+    repository: "bens-tap"
+  gitops:
+    ssh_secret: ""
+
+tap_gui:
+  service_type: ClusterIP
+  ingressEnabled: "true"
+  ingressDomain: "benwilcock.io"
+  app_config:
+    app:
+      baseUrl: http://tap-gui.benwilcock.io
+    catalog:
+      locations:
+        - type: url
+          target: https://github.com/benwilcock/tap-gui-blank-catalog/blob/main/catalog-info.yaml
+    backend:
+      baseUrl: http://tap-gui.benwilcock.io
+      cors:
+        origin: http://tap-gui.benwilcock.io
+
+metadata_store:
+  app_service_type: LoadBalancer # (optional) Defaults to LoadBalancer. Change to NodePort for distributions that don't support LoadBalancer
+
+grype:
+  targetImagePullSecret: registry-credentials
+
+contour:
+  envoy:
+    service:
+      type: LoadBalancer
+
+# These items need an External IP....
+
+# Add to /etc/hosts
+# XX.XX.XX.XX tap-gui.benwilcock.io
+
+# learningcenter:
+#   ingressDomain: "learningcenter.13.58.201.179.nip.io"
+
+# cnrs:
+#   domain_name: "apps.13.58.201.179.nip.io"
