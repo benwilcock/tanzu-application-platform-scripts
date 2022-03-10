@@ -3,10 +3,10 @@
 ################################################################
 
 # Choose where Built container images will go...
-$Env:REPOSITORY_TYPE = "dockerhub" # One of "dockerhub" "harbor" "local"
+$Env:REPOSITORY_TYPE = "harbor" # One of "dockerhub" "harbor" "local"
 
 # Specify the version of TAP to install
-$Env:TAP_VERSION = "1.0.2-build.8" # "1.1.0-build.5" # "1.0.1" "1.0.2-build.8"
+$Env:TAP_VERSION = "1.1.0-build.9" # "1.1.0-build.5" # "1.0.1" "1.0.2-build.8"
 
 # Ask for permission to proceed.
 $yes = New-Object System.Management.Automation.Host.ChoiceDescription "&Yes","Description."
