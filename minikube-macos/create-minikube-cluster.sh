@@ -51,8 +51,8 @@ Example output
 
 export INSTALL_BUNDLE=registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:82dfaf70656b54dcba0d4def85ccae1578ff27054e7533d08320244af7fb0343
 export INSTALL_REGISTRY_HOSTNAME=registry.tanzu.vmware.com
-export INSTALL_REGISTRY_USERNAME=avetter@pivotal.io
-export INSTALL_REGISTRY_PASSWORD=9PaJTa7XZgWacbvPn8FPhFdG_
+export INSTALL_REGISTRY_USERNAME=username@vmware.com
+export INSTALL_REGISTRY_PASSWORD=password_one
 
 pivnet download-product-files --product-slug='tanzu-cluster-essentials' --release-version='1.0.0' --product-file-id=1105820    # or download from here: https://network.pivotal.io/products/tanzu-cluster-essentials/
 
@@ -75,11 +75,11 @@ kubectl get pods --all-namespaces
 export TAP_VERSION="1.0.2-build.8"
 export TAP_NAMESPACE="tap-install"
 export INSTALL_REGISTRY_HOSTNAME="registry.tanzu.vmware.com"
-export INSTALL_REGISTRY_USERNAME="avetter@pivotal.io"
-export INSTALL_REGISTRY_PASSWORD="9PaJTa7XZgWacbvPn8FPhFdG_"
+export INSTALL_REGISTRY_USERNAME="username@vmware.com"
+export INSTALL_REGISTRY_PASSWORD="password"
 export DOCKER_SERVER="https://index.docker.io/v1/"
-export DOCKER_USERNAME="anthonyvetter"
-export DOCKER_PASSWORD="FhqCEh8GphkChKXsEMabisdE"
+export DOCKER_USERNAME="username"
+export DOCKER_PASSWORD="password"
 
 tanzu secret registry add tap-registry \
   --username $INSTALL_REGISTRY_USERNAME --password $INSTALL_REGISTRY_PASSWORD \
@@ -90,11 +90,8 @@ tanzu package repository get tanzu-tap-repository --namespace $TAP_NAMESPACE
 
 tanzu package available list --namespace $TAP_NAMESPACE
 
-curl -o tap-values.yml https://raw.githubusercontent.com/benwilcock/tanzu-application-platform-scripts/main/minikube-win/template-tap-values.yml
 
-
-
-cat << EOF > tap-values-test.yaml
+cat << EOF > tap-values.yaml
 profile: light
 ceip_policy_disclosed: true
 
