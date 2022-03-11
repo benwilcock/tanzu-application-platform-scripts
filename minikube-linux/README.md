@@ -4,11 +4,13 @@ To use these scripts, do the following:
 
 ## Get Set Up
 
+1. Clone this repo locally and got to the `minikube-linux` folder.
+1. Download to this folder the Tanzu CLI from the Tanzu Network (requires an account, but these are free).
+1. Download to this folder the Tanzu Cluster Essentials for VMware Tanzu from the Tanzu Network (requires an account, but these are free).
 1. Set your installation settings in `settings.sh` including your `$REGISTRY_TYPE` and location etc.
 1. Create your file `secret-$(REGISTRY-TYPE}-tap-env.sh` using the template provided.
 1. Create your file `secret-$(REGISTRY-TYPE}-tap-values.yml` using the template provided.
-1. Download to this folder the Tanzu CLI from the Tanzu Network (requires an account, but these are free).
-1. Download to this folder the Tanzu Cluster Essentials for VMware Tanzu from the Tanzu Network (requires an account, but these are free).
+
 
 ## Establish the pre-requisites
 
