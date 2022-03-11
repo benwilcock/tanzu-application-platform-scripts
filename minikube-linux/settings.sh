@@ -3,7 +3,7 @@
 ############## Common Environment Variables #######################
 
 # Specify the Minikube VM driver to use
-export MINIKUBE_VM_DRIVER="docker" # "kvm2" or "docker"
+export MINIKUBE_VM_DRIVER="docker" # "kvm2" or "docker" (Fedora prefers kvm2)
 
 # Specify the version of TAP you wish to install
 export TAP_VERSION="1.0.2" # "1.0.1" "1.0.0" "1.1.0-build.9" 

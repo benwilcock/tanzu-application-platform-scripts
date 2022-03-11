@@ -28,4 +28,4 @@ tanzu apps workload create tanzu-java-web-app \
 
 # Watch the workload as it deploys
 yes_or_quit "Would you like to watch the workload become ready?"
-watch --color "tanzu apps workload get tanzu-java-web-app; echo -e '${GREEN}Wait for the Workload to become ${WHITE}READY${NC} and get a ${WHITE}URL${NC}. Then press Ctrl-C and run the stage-7 script.${NC}'"
+watch --color "tanzu apps workload get tanzu-java-web-app; echo -e '${GREEN}Wait for the Workload to become ${WHITE}READY${GREEN} and get a ${WHITE}URL${GREEN}. Then press Ctrl-C and run the stage-7 script.${NC}'"
