@@ -11,9 +11,9 @@ source ./helper.sh
 title "Stage 6 - Run A Developer Workload on TAP." 
 
 # Run the workload?
-sub_title "This script creates a developer workload for you."
+sub_title "This script creates a developer workload for you. This can take a while the first time you do it."
 
-yes_or_quit "This can take a while. Continue?"
+yes_or_quit "Continue?"
 
 # Schedule a workload to run - this may take several minutes
 tanzu apps workload create tanzu-java-web-app \
