@@ -4,12 +4,13 @@
 # You only need to do this if you don't have Tanzu CLI already #
 ################################################################
 
-# Describe this stage
-echo -e "${BLUE}Stage 1 - Installing the Tanzu CLI${NC}" 
-echo -e "${GREEN}This script installs the Tanzu CLI and the Tanzu CLI plugins required by TAP. If you already have the correct Tanzu CLI and plugins installed you can skip this step. Continue?${NC}"
-
 # Source common functions & variables
 source ./helper.sh
+
+# Describe this stage
+title "Stage 1 - Installing the Tanzu CLI" 
+sub_title "This script installs the Tanzu CLI and the Tanzu CLI plug-ins required by TAP."
+message "If you already have the correct Tanzu CLI and plug-ins installed you can skip this step."
 
 function install_cli {
 
@@ -21,11 +22,11 @@ function install_cli {
   check_file ${CLI_FILE}
 
   mkdir tanzu-cli
-  echo -e "${GREEN}Extracting the install files from the archive.${NC}"
+  message "${GREEN}Extracting the install files from the archive.${NC}"
   tar -xvf $CLI_FILE -C ./tanzu-cli
   cd tanzu-cli
 
-  echo -e "${GREEN}Installing the Tanzu CLI (needs sudo).${NC}"
+  message "${GREEN}Installing the Tanzu CLI (needs sudo).${NC}"
   sudo install cli/core/v0.11.1/tanzu-core-linux_amd64 /usr/local/bin/tanzu
 
   # Install the Tanzu CLI Plugins
@@ -36,7 +37,8 @@ function install_cli {
   rm -rf tanzu-cli
 }
 
-install_cli
+yes_or_no "Install the Tanzu CLI and its plug-ins?" \
+  && install_cli
 
 # Check the correct version is now installed
 tanzu version
@@ -45,7 +47,7 @@ tanzu version
 tanzu plugin list
 
 # Continue with the install?
-yes_or_quit "$( echo -e "${GREEN}In the list above do the plugins: ${WHITE}package, secret, apps, services, and accelerator${GREEN} have the status 'installed'?${NC}" )"
+yes_or_quit "In the list above are the plugins: ${WHITE}package, secret, apps, services, and accelerator${GREEN} have a status of 'installed'?"
 
-
-echo -e "${GREEN}Next, run the stage-2 script.${NC}"
+# Prompt to benin the next phase
+prompt "Next, run the stage-2 script."

@@ -7,11 +7,13 @@
 # Source the environment variables
 source ./helper.sh
 
-echo -e "${BLUE}Stage 6 - Run A Developer Workload on TAP${NC}" 
+# Describe the stage
+title "Stage 6 - Run A Developer Workload on TAP." 
 
 # Run the workload?
-yes_or_quit "$( echo -e "This script creates a developer workload for you. It can take a while. Continue?" )"
+sub_title "This script creates a developer workload for you."
 
+yes_or_quit "This can take a while. Continue?"
 
 # Schedule a workload to run - this may take several minutes
 tanzu apps workload create tanzu-java-web-app \
@@ -24,7 +26,6 @@ tanzu apps workload create tanzu-java-web-app \
   --namespace $TAP_DEV_NAMESPACE \
   --yes 
 
-yes_or_quit "$( echo -e "Would you like to watch the workload become ready?" )"
-
 # Watch the workload as it deploys
-watch --color "tanzu apps workload get tanzu-java-web-app; echo -e '${GREEN}Wait for the Workload KNative Service to become READY and get a URL. Then press Ctrl-C and run the stage-7 script.${NC}'"
+yes_or_quit "Would you like to watch the workload become ready?"
+watch --color "tanzu apps workload get tanzu-java-web-app; echo -e '${GREEN}Wait for the Workload to become ${WHITE}READY${NC} and get a ${WHITE}URL${NC}. Then press Ctrl-C and run the stage-7 script.${NC}'"

@@ -4,12 +4,16 @@
 # Creating a Developer workspace on Kubernetes & TAP           #
 ################################################################
 
-echo -e "${BLUE}Stage 5 - Create a Developer Workspace${NC}" 
-
 # Source the environment variables
 source ./helper.sh
 
-yes_or_quit "$( echo -e "${NC}This script will create a developer workspace on TAP and add registry-credentials for $REPOSITORY_TYPE. Continue?" )"
+# Describe the stage
+title "Stage 5 - Create a Developer Workspace" 
+
+# Create the workspace?
+message "This script will create a developer workspace on TAP and add registry-credentials for $REPOSITORY_TYPE."
+
+yes_or_quit "Continue?"
 
 # Create a namespace for the developer to work in 
 kubectl create ns ${TAP_DEV_NAMESPACE} 
@@ -27,4 +31,4 @@ curl -o serviceaccounts.yml https://raw.githubusercontent.com/benwilcock/tanzu-a
 # Add the necessary RBAC Roles, Accounts, Bindings etc... 
 kubectl -n ${TAP_DEV_NAMESPACE} apply -f "serviceaccounts.yml" 
 
-echo -e "${GREEN}Next, run the stage-6 script.${NC}"
+prompt "Next, run the stage-6 script."
