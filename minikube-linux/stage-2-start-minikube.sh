@@ -13,8 +13,8 @@ source ./helper.sh
 title "Stage 2 - Starting Your Kubernetes Cluster." 
 
 # TAP Works with Kubernetes  1.20, 1.21, or 1.22
-yes_or_no "Start Minikube?" \
-  && minikube start --kubernetes-version='1.22.6' --cpus='8' --driver=${MINIKUBE_VM_DRIVER}
+yes_or_no "Start Minikube with the ${WHITE}${MINIKUBE_VM_DRIVER}${YELLOW} driver?" \
+  && minikube start --kubernetes-version='1.22.6' --memory='12g' --cpus='8' --driver=${MINIKUBE_VM_DRIVER}
 
 # Adding the host entries to the hosts file (needs sudo)
 export ENVOY="$(minikube ip)"

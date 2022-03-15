@@ -16,7 +16,7 @@ if [ "$REPOSITORY_TYPE" = "dockerhub" ]; then
     echo -e "${NC}DockerHub has limits for FREE accounts. You may struggle to install TAP or get issues later."
 fi
 
-yes_or_quit "Install TAP to Kubernetes?"
+yes_or_quit "Adding namespace, registry secrets, and repository records. Continue?"
 
 export TAP_NAMESPACE="tap-install"
 
@@ -38,8 +38,7 @@ tanzu package repository add tanzu-tap-repository \
   --namespace $TAP_NAMESPACE 
 
 # Install the TAP packages to Kubernetes
-prompt "This next step take 30 mins or more to complete and use lots of cpu and network resources."
-yes_or_quit "Ready?" \
+yes_or_quit "Install TAP (takes 30 mins or more, needs lots of CPU, Memory and Network resources). Continue?" \
   && tanzu package install tap -p tap.tanzu.vmware.com -v $TAP_VERSION \
       --values-file secret-$REPOSITORY_TYPE-tap-values.yml \
       --namespace $TAP_NAMESPACE
