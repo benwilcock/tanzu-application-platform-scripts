@@ -19,10 +19,10 @@ tanzu apps workload create tanzu-java-web-app \
 --label app.kubernetes.io/part-of=tanzu-java-web-app \
 --label tanzu.app.live.view=true \
 --label tanzu.app.live.view.application.name=tanzu-java-web-app \
---namespace default \
+--namespace $TAP_DEV_NAMESPACE \
 --yes
 
-# Spring Boot Admin Workload
+# Spring Boot Admin
 tanzu apps workload create spring-boot-admin \
  --git-repo https://github.com/benwilcock/spring-boot-admin \
  --git-branch main \
@@ -30,8 +30,21 @@ tanzu apps workload create spring-boot-admin \
  --label app.kubernetes.io/part-of=spring-boot-admin \
  --label tanzu.app.live.view=true \
  --label tanzu.app.live.view.application.name=spring-boot-admin \
- --yes \
- --namespace default 
+ --namespace $TAP_DEV_NAMESPACE \
+ --yes 
+
+ # Spring Config Server
+tanzu apps workload create spring-config-server \
+ --git-repo https://github.com/benwilcock/spring-config-server \
+ --git-branch main \
+ --type web \
+ --label app.kubernetes.io/part-of=spring-config-server \
+ --label tanzu.app.live.view=true \
+ --label tanzu.app.live.view.application.name=spring-config-server \
+ --namespace $TAP_DEV_NAMESPACE \
+ --env "NAMESPACE=$TAP_DEV_NAMESPACE" \
+ --env "DOMAIN=$APPS_DOMAIN" \
+ --yes 
 
 # Tanzu Java Web App (With Spring Boot Admin Integration)
 tanzu apps workload create tanzu-java-web-app \
@@ -47,33 +60,22 @@ tanzu apps workload create tanzu-java-web-app \
  --env "DOMAIN=$APPS_DOMAIN" \
  --env "SPRING_PROFILES_ACTIVE=tap"
 
-# Spring Config Server
-tanzu apps workload create spring-config-server \
- --git-repo https://github.com/benwilcock/spring-config-server \
- --git-branch main \
- --type web \
- --label app.kubernetes.io/part-of=spring-config-server \
- --label tanzu.app.live.view=true \
- --label tanzu.app.live.view.application.name=spring-config-server \
- --yes \
- --namespace default \
- --env "NAMESPACE=default" \
- --env "DOMAIN=apps.benwilcock.io"
 
-# Add Spring Boot Admin (SBA) Accelerator
-tanzu accelerator create spring-boot-admin \
---git-repository https://github.com/benwilcock/spring-boot-admin \
---git-branch main \
---icon-url https://github.com/benwilcock/spring-boot-admin/raw/main/images/logo-spring-boot-admin.png 
 
-kubectl apply -f sba-k8s-resource.yaml --namespace accelerator-system
-tanzu accelerator update spring-boot-admin --reconcile
+# # Add Spring Boot Admin (SBA) Accelerator
+# tanzu accelerator create spring-boot-admin \
+# --git-repository https://github.com/benwilcock/spring-boot-admin \
+# --git-branch main \
+# --icon-url https://github.com/benwilcock/spring-boot-admin/raw/main/images/logo-spring-boot-admin.png 
 
-# Working with apps
-tanzu apps workload list
-tanzu apps workload get tanzu-java-web-app
-tanzu apps workload tail tanzu-java-web-app --since 10m --timestamp
+# kubectl apply -f sba-k8s-resource.yaml --namespace accelerator-system
+# tanzu accelerator update spring-boot-admin --reconcile
 
-# Checking deplyoment
-http tanzu-java-web-app.${TAP_DEV_NAMESPACE}.apps.${ENVOY}.nip.io
-kubectl describe runnable.carto.run/tanzu-java-web-app
+# # Working with apps
+# tanzu apps workload list
+# tanzu apps workload get tanzu-java-web-app
+# tanzu apps workload tail tanzu-java-web-app --since 10m --timestamp
+
+# # Checking deplyoment
+# http tanzu-java-web-app.${TAP_DEV_NAMESPACE}.apps.${ENVOY}.nip.io
+# kubectl describe runnable.carto.run/tanzu-java-web-app

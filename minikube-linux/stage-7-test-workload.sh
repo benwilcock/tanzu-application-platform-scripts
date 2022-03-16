@@ -3,7 +3,6 @@
 ################################################################
 # Test the Developer workload on TAP                           #
 # Requires `minikube tunnel` AND Edits to your `hosts` file.   #
-# See 'stage-01.ps1' for details.                              #
 ################################################################
 
 # Source the environment variables

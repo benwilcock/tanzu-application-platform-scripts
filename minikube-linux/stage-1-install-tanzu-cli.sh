@@ -1,6 +1,5 @@
 ################################################################
-# Requires a DEDICATED *Admin* PowerShell Window               #
-# Adds Tanzu CLI executable to "Programs Files"                #
+# Adds Tanzu CLI executable to PATH                            #
 # You only need to do this if you don't have Tanzu CLI already #
 ################################################################
 

@@ -11,8 +11,10 @@ YELLOW='\033[1;33m'
 BLUE='\033[1;34m'
 WHITE='\033[1;37m'
 NC='\033[0m' # No Color
+DING='\007'
 
 function yes_or_no {
+    echo -en ${DING}
     while true; do
         read -p "$( echo -e ${YELLOW}$* ${NC}[y/n]: )" yn
         case $yn in
@@ -23,6 +25,7 @@ function yes_or_no {
 }
 
 function yes_or_quit {
+    echo -en ${DING}
     while true; do
         read -p "$( echo -e ${YELLOW}$* ${NC}[y/n]: )" yn
         case $yn in

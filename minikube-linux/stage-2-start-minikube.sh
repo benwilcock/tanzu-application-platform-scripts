@@ -1,7 +1,6 @@
 #!/bin/bash
 
 ################################################################
-# Minikube requires a DEDICATED *Admin* PowerShell Window      #
 # Hosts must be edited to contan your App URls and Minikube IP #
 # Minikube Tunnel MUST be running to access your apps!         #
 ################################################################
@@ -14,7 +13,7 @@ title "Stage 2 - Starting Your Kubernetes Cluster."
 
 # TAP Works with Kubernetes  1.20, 1.21, or 1.22
 yes_or_no "Start Minikube with the ${WHITE}${MINIKUBE_VM_DRIVER}${YELLOW} driver?" \
-  && minikube start --kubernetes-version='1.22.6' --memory='12g' --cpus='8' --driver=${MINIKUBE_VM_DRIVER}
+  && minikube start --kubernetes-version='1.22.6' --memory='16g' --cpus='8' --driver=${MINIKUBE_VM_DRIVER}
 
 # Adding the host entries to the hosts file (needs sudo)
 export ENVOY="$(minikube ip)"
