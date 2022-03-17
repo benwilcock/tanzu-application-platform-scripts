@@ -38,10 +38,12 @@ tanzu package repository add tanzu-tap-repository \
   --namespace $TAP_NAMESPACE 
 
 # Install the TAP packages to Kubernetes
+echo -en ${DING}
 yes_or_quit "Install TAP (takes 30 mins or more, needs lots of CPU, Memory and Network resources). Continue?" \
   && tanzu package install tap -p tap.tanzu.vmware.com -v $TAP_VERSION \
       --values-file secret-$REPOSITORY_TYPE-tap-values.yml \
       --namespace $TAP_NAMESPACE
 
 # Watch the progress of the installation
+yes_or_quit "Would you like to watch the Reconciliation progress?" && \
 watch --color "tanzu package installed list -A; echo -e '${GREEN}When ALL packages have a STATUS of 'Reconcile Succeeded', press Ctrl-C to exit and run the stage-5 script.${NC}'"

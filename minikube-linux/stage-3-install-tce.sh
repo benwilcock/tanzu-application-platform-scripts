@@ -39,4 +39,8 @@ yes_or_no "Install VMware Cluster Essentials for Tanzu?" \
   && install_tce
 
 # Watch the installation
-watch --color "kubectl get pods --all-namespaces; echo -e '${GREEN}If all pods have a STATUS of Running, press Ctrl-C to exit and run the stage-4 script.${NC}'"
+# watch --color "kubectl get pods --all-namespaces; echo -e '${GREEN}If all pods have a STATUS of Running, press Ctrl-C to exit and run the stage-4 script.${NC}'"
+
+# Finished
+echo -en ${DING}
+prompt "You can now run the stage-4 script."

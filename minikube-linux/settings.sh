@@ -3,7 +3,7 @@
 ############## Common Environment Variables #######################
 
 # Specify the Minikube VM driver to use
-export MINIKUBE_VM_DRIVER="docker" # "kvm2" or "docker" (Fedora prefers kvm2)
+export MINIKUBE_VM_DRIVER="kvm2" # "kvm2" or "docker" (Fedora prefers kvm2)
 
 # Specify the version of TAP you wish to install
 export TAP_VERSION="1.0.2" # "1.0.1" "1.0.0"
@@ -15,7 +15,7 @@ export REPOSITORY_TYPE="dockerhub" # One of "dockerhub" or "harbor"
 export INSTALL_REGISTRY_HOSTNAME="registry.tanzu.vmware.com" 
 
 # Specify the location of the Docker Image Registry (e.g. DockerHub, Harbor, GCR, etc.)
-export DOCKER_SERVER="https://index.docker.io/v1/" # Format is different for Harbor, GCR. e.g. "harbor.ryanbaker.io"
+export DOCKER_SERVER="https://index.docker.io/v1/" # Format is different for Harbor, GCR. e.g. "harbor.made-up-name.io"
 
 # Specify the Kubernetes namespace to use as your developer workspace.
 export TAP_DEV_NAMESPACE="default" 

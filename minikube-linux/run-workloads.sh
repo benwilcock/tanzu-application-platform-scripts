@@ -13,7 +13,6 @@ export SPRING_PROFILES_ACTIVE='tap'
 ##################################
 
 # Spring Boot Admin
-yes_or_no "Deploy My Spring Boot Admin?" && \
 tanzu apps workload create spring-boot-admin \
  --git-repo https://github.com/benwilcock/spring-boot-admin \
  --git-branch main \
@@ -21,8 +20,7 @@ tanzu apps workload create spring-boot-admin \
  --label app.kubernetes.io/part-of=spring-boot-admin \
  --label tanzu.app.live.view=true \
  --label tanzu.app.live.view.application.name=spring-boot-admin \
- --namespace $TAP_DEV_NAMESPACE \
- --yes 
+ --namespace $TAP_DEV_NAMESPACE
 
 # Watch the workload as it deploys
 yes_or_no "Would you like to watch the workload become ready?" && \
@@ -30,7 +28,6 @@ watch --color "tanzu apps workload get spring-boot-admin; echo -e '${GREEN}Wait 
 
 
  # Spring Config Server
- yes_or_no "Deploy My Spring Boot Config Server?" && \
 tanzu apps workload create spring-config-server \
  --git-repo https://github.com/benwilcock/spring-config-server \
  --git-branch main \
@@ -40,8 +37,7 @@ tanzu apps workload create spring-config-server \
  --label tanzu.app.live.view.application.name=spring-config-server \
  --namespace $TAP_DEV_NAMESPACE \
  --env "NAMESPACE=$TAP_DEV_NAMESPACE" \
- --env "DOMAIN=$APPS_DOMAIN" \
- --yes 
+ --env "DOMAIN=$APPS_DOMAIN"
 
 # Watch the workload as it deploys
 yes_or_no "Would you like to watch the workload become ready?" && \
@@ -49,7 +45,6 @@ watch --color "tanzu apps workload get spring-config-server; echo -e '${GREEN}Wa
 
 
 # Tanzu Java Web App (With Spring Boot Admin Integration)
-yes_or_no "Deploy My Tanzu Java Web App?" && \
 tanzu apps workload create tanzu-java-web-app \
  --git-repo https://github.com/benwilcock/tanzu-java-web-app \
  --git-branch main \
@@ -61,7 +56,6 @@ tanzu apps workload create tanzu-java-web-app \
  --env "NAMESPACE=$TAP_DEV_NAMESPACE" \
  --env "DOMAIN=$APPS_DOMAIN" \
  --env "SPRING_PROFILES_ACTIVE=$SPRING_PROFILES_ACTIVE"
- --yes
 
 # Watch the workload as it deploys
 yes_or_no "Would you like to watch the workload become ready?" && \
