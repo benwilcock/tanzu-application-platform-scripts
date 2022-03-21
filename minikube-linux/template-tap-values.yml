@@ -21,18 +21,18 @@ ootb_supply_chain_basic:
 tap_gui:
   service_type: ClusterIP
   ingressEnabled: "true"
-  ingressDomain: "made-up-name.net"
+  ingressDomain: "example.com"
   app_config:
     app:
-      baseUrl: http://tap-gui.made-up-name.net
+      baseUrl: http://tap-gui.example.com
     catalog:
       locations:
         - type: url
           target: https://github.com/benwilcock/tap-gui-blank-catalog/blob/main/catalog-info.yaml
     backend:
-      baseUrl: http://tap-gui.made-up-name.net
+      baseUrl: http://tap-gui.example.com
       cors:
-        origin: http://tap-gui.made-up-name.net
+        origin: http://tap-gui.example.com
 
 metadata_store:
   app_service_type: LoadBalancer # (optional) Defaults to LoadBalancer. Change to NodePort for distributions that don't support LoadBalancer
@@ -43,4 +43,4 @@ contour:
       type: LoadBalancer
 
 cnrs:
-  domain_name: "apps.made-up-name.net"
+  domain_name: "apps.example.com"

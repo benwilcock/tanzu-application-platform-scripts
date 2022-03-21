@@ -4,7 +4,7 @@
 source ./helper.sh
 
 export TAP_DEV_NAMESPACE='default'
-export APPS_DOMAIN='apps.made-up-name.net'
+export APPS_DOMAIN='apps.example.com'
 export SPRING_PROFILES_ACTIVE='tap'
 
 

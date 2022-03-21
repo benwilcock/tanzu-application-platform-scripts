@@ -17,7 +17,7 @@ yes_or_quit "Test the workload?"
 
 # Test the application is responding (may take a few seconds at first)
 message "Testing the workload by sending a request.\n" 
-RESPONSE="$(curl --silent http://tanzu-java-web-app.default.apps.made-up-name.net)"
+RESPONSE="$(curl --silent http://tanzu-java-web-app.default.apps.example.com)"
 message "Workload response: '${RESPONSE}'" 
 
 if [ "${RESPONSE}" = "Greetings from Spring Boot + Tanzu!" ]; then

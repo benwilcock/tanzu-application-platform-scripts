@@ -18,7 +18,7 @@ function install_tce {
   prompt "Installing VMware Cluster Essentials for Tanzu onto Kubernetes."
 
   # This variable is needed by the installer to specify the VMware Cluster Essentials for Tanzu bundle
-  export INSTALL_BUNDLE=registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:82dfaf70656b54dcba0d4def85ccae1578ff27054e7533d08320244af7fb0343
+  export INSTALL_BUNDLE="registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:82dfaf70656b54dcba0d4def85ccae1578ff27054e7533d08320244af7fb0343"
 
   # Check the download is ready
   TCE_FILE=tanzu-cluster-essentials-linux-amd64-1.0.0.tgz

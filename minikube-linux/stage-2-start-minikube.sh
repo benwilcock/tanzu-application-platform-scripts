@@ -17,7 +17,7 @@ yes_or_no "Start Minikube with the ${WHITE}${MINIKUBE_VM_DRIVER}${YELLOW} driver
 
 # Adding the host entries to the hosts file (needs sudo)
 export ENVOY="$(minikube ip)"
-export HOSTS="tap-gui.made-up-name.net tanzu-java-web-app.default.apps.made-up-name.net"
+export HOSTS="tap-gui.example.com tanzu-java-web-app.default.apps.example.com"
 message "Your Minikube IP is: ${GREEN}${ENVOY}${NC}"
 message "You must add ${GREEN}'${ENVOY} ${HOSTS}'${NC} to your '/etc/hosts' file."
 message "This will enable http requests to be routed to specific TAP applications."

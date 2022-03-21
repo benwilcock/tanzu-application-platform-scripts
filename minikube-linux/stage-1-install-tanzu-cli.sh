@@ -14,7 +14,7 @@ message "If you already have the correct Tanzu CLI and plug-ins installed you ca
 function install_cli {
 
   # Set env var TANZU_CLI_NO_INIT to true to insure the local downloaded versions of the CLI core and plug-ins are installed.
-  export TANZU_CLI_NO_INIT=true 
+  export TANZU_CLI_NO_INIT="true" 
 
   # Check the download is ready
   export CLI_FILE=tanzu-framework-linux-amd64.tar
