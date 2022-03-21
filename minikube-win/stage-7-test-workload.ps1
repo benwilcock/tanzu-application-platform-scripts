@@ -5,7 +5,7 @@
 ################################################################
 
 # Test the application is responding (may take a few seconds at first)
-curl.exe http://tanzu-java-web-app.default.apps.made-up-name.net 
+curl.exe http://tanzu-java-web-app.default.apps.example.com 
 
 # Final confirmation
 Write-Host "`n^^ Here you should see the words `"Greetings from Spring Boot + Tanzu!`" if the workload is responding." -ForegroundColor Blue -BackgroundColor Black
