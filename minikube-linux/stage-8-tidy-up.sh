@@ -28,8 +28,7 @@ yes_or_quit "Delete the Tanzu CLI? (needs sudo)?"
 
 # Uninstall the old Tanzu Command Line
 sudo rm /usr/local/bin/tanzu  # Remove CLI binary (executable)
-rm -rf $HOME/tanzu/cli        # Remove previously downloaded cli files
 rm -rf $HOME/.config/tanzu/       # current location # Remove config directory
 rm -rf $HOME/.tanzu/              # old location # Remove config directory
 rm -rf $HOME/.cache/tanzu         # remove cached catalog.yaml
-rm -rf $HOME/Library/Application\ Support/tanzu-cli/* # Remove plug-ins
+rm -rf $HOME/.local/share/tanzu-cli # Remove plug-ins
