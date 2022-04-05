@@ -37,11 +37,15 @@ tanzu package repository add tanzu-tap-repository \
   --url $INSTALL_REGISTRY_HOSTNAME/tanzu-application-platform/tap-packages:$TAP_VERSION \
   --namespace $TAP_NAMESPACE 
 
+yes_or_no "Create your TAP Values file (tap-values.yml) using your settings?" \
+  && curl -o tap-values.tmp https://raw.githubusercontent.com/benwilcock/tanzu-application-platform-scripts/main/minikube-win/template-tap-values.yml \ 
+  && envsubst < tap-values.tmp > tap-values.yml
+
 # Install the TAP packages to Kubernetes
 echo -en ${DING}
 yes_or_quit "Install TAP (takes 30 mins or more, needs lots of CPU, Memory and Network resources). Continue?" \
   && tanzu package install tap -p tap.tanzu.vmware.com -v $TAP_VERSION \
-      --values-file secret-$REPOSITORY_TYPE-tap-values.yml \
+      --values-file tap-values.yml \
       --namespace $TAP_NAMESPACE
 
 # Watch the progress of the installation

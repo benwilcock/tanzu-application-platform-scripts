@@ -23,9 +23,13 @@ tanzu apps workload create tanzu-java-web-app \
   --label app.kubernetes.io/part-of=tanzu-java-web-app \
   --label tanzu.app.live.view=true \
   --label tanzu.app.live.view.application.name=tanzu-java-web-app \
+  --annotation autoscaling.knative.dev/minScale=1 \
   --namespace $TAP_DEV_NAMESPACE \
   --yes 
 
 # Watch the workload as it deploys
 yes_or_quit "Would you like to watch the workload become ready?"
 watch --color "tanzu apps workload get tanzu-java-web-app; echo -e '${GREEN}Wait for the Workload to become ${WHITE}READY${GREEN} and get a ${WHITE}URL${GREEN}. Then press Ctrl-C and run the stage-7 script.${NC}'"
+
+# Checking deplyoment
+# kubectl describe runnable.carto.run/tanzu-java-web-app

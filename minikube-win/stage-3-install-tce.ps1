@@ -22,8 +22,10 @@ kubectl create namespace kapp-controller
 kubectl create namespace secretgen-controller
 
 # Next, apply the YAML configurations for the required apps: 
-kubectl apply -f https://github.com/vmware-tanzu/carvel-kapp-controller/releases/download/v0.30.0/release.yml -n kapp-controller 
-kubectl apply -f https://github.com/vmware-tanzu/carvel-secretgen-controller/releases/download/v0.7.1/release.yml -n secretgen-controller 
+# kubectl apply -f https://github.com/vmware-tanzu/carvel-kapp-controller/releases/download/v0.30.0/release.yml -n kapp-controller 
+# kubectl apply -f https://github.com/vmware-tanzu/carvel-secretgen-controller/releases/download/v0.7.1/release.yml -n secretgen-controller 
+kubectl apply -f https://github.com/vmware-tanzu/carvel-kapp-controller/releases/download/v0.34.0/release.yml -n kapp-controller 
+kubectl apply -f https://github.com/vmware-tanzu/carvel-secretgen-controller/releases/download/v0.8.0/release.yml -n secretgen-controller 
 
 sleep 10
 while (1) {clear; kubectl get pods --all-namespaces; Write-Host "When ALL pods have a STATUS of 'Running', press Ctrl-C and run the stage-4 script." -ForegroundColor DarkGreen -BackgroundColor Black; sleep 10}

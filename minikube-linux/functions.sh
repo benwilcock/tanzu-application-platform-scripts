@@ -54,11 +54,15 @@ function message {
 }
 
 function check_file {
-    FILE=$1
+
+    DIR="${BASH_SOURCE%/*}"
+    if [[ ! -d "$DIR" ]]; then DIR="$PWD"; fi
+    FILE="$DIR/$1"
+
     if [ -f $FILE ]; then
         return 0;
     else 
-        echo -e "${RED}File '${FILE}' is missing! Create one using the template supplied.${NC}"
+        echo -e "${WHITE}Failed the file check. The file ${RED}${FILE}${WHITE} is missing!${NC}"
         exit
     fi
 }

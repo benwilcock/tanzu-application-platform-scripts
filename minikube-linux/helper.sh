@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # Pull in the various variables and functions required by the scripts
-source ./functions.sh
-source ./settings.sh
-source ./checks.sh
+DIR="${BASH_SOURCE%/*}"
+if [[ ! -d "$DIR" ]]; then DIR="$PWD"; fi
+. "$DIR/functions.sh"
+. "$DIR/settings.sh"
+. "$DIR/checks.sh"

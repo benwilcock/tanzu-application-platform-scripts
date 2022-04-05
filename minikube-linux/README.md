@@ -36,7 +36,6 @@ Some of the scripts rely on certain files being available, some of which need do
 Next, you need to open a text editor or an IDE and create some files needed to configure the TAP system.
 
 1. Create the file `secret-$(REGISTRY-TYPE}-tap-env.sh` (start with the [template provided](template-tap-env.sh)).
-1. Create the file `secret-$(REGISTRY-TYPE}-tap-values.yml` (start with the [template provided](template-tap-values.yml)).
 
 ## Install the Tanzu CLI Tool
 
@@ -54,8 +53,6 @@ Run the `stage-2` script (starts minikube). Follow the prompts. Edit your `/etc/
 1. Run the `stage-3` to install Tanzu Cluster Essentials for VMware Tanzu.
 1. Run the `stage-4` script to install Tanzu Application Platform.
 1. Run the `stage-5` script to create a developer workspace and add the required repository and secrets.
-1. Run the `stage-6` script to deploy a test application workload.
-1. Run the `stage-7` script to test the application workload with `curl`.
 
 You now have a fully working Tanzu Application Platform installation on Minikube. If you're not using Minikube, you may need to make some adjustments to these steps to suit your needs.
 
