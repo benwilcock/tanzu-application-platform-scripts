@@ -2,11 +2,11 @@ profile: iterate
 ceip_policy_disclosed: true # Installation fails if this is set to 'false'
 
 buildservice:
-  kp_default_repository: "index.docker.io/%DOCKER_USERNAME%/build-service"
-  kp_default_repository_username: "%DOCKER_USERNAME%"
-  kp_default_repository_password: "%DOCKER_PASSWORD%"
-  tanzunet_username: "%INSTALL_REGISTRY_USERNAME%"
-  tanzunet_password: "%INSTALL_REGISTRY_PASSWORD%"
+  kp_default_repository: "index.docker.io/DOCKER_USERNAME/build-service"
+  kp_default_repository_username: "DOCKER_USERNAME"
+  kp_default_repository_password: "DOCKER_PASSWORD"
+  tanzunet_username: "INSTALL_REGISTRY_USERNAME"
+  tanzunet_password: "INSTALL_REGISTRY_PASSWORD"
   enable_automatic_dependency_updates: true
 
 supply_chain: basic
@@ -14,7 +14,7 @@ supply_chain: basic
 ootb_supply_chain_basic:
   registry:
     server: "index.docker.io"
-    repository: "%DOCKER_USERNAME%"
+    repository: "DOCKER_USERNAME"
   gitops:
     ssh_secret: ""
 
@@ -24,18 +24,18 @@ metadata_store:
 tap_gui:
   service_type: ClusterIP
   ingressEnabled: "true"
-  ingressDomain: "%DOMAIN%"
+  ingressDomain: "example.com"
   app_config:
     app:
-      baseUrl: http://tap-gui.%DOMAIN%
+      baseUrl: http://tap-gui.example.com
     catalog:
       locations:
         - type: url
           target: https://github.com/benwilcock/tap-gui-blank-catalog/blob/main/catalog-info.yaml
     backend:
-      baseUrl: http://tap-gui.%DOMAIN%
+      baseUrl: http://tap-gui.example.com
       cors:
-        origin: http://tap-gui.%DOMAIN%
+        origin: http://tap-gui.example.com
 
 contour:
   envoy:
@@ -43,4 +43,4 @@ contour:
       type: LoadBalancer
 
 cnrs:
-  domain_name: "%APPS_DOMAIN%"
+  domain_name: "apps.example.com"
