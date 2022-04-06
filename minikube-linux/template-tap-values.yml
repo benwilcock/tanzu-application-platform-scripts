@@ -18,21 +18,21 @@ ootb_supply_chain_basic:
   gitops:
     ssh_secret: ""
 
-# tap_gui:
-#   service_type: ClusterIP
-#   ingressEnabled: "true"
-#   ingressDomain: "$DOMAIN"
-#   app_config:
-#     app:
-#       baseUrl: http://tap-gui.$DOMAIN
-#     catalog:
-#       locations:
-#         - type: url
-#           target: https://github.com/benwilcock/tap-gui-blank-catalog/blob/main/catalog-info.yaml
-#     backend:
-#       baseUrl: http://tap-gui.$DOMAIN
-#       cors:
-#         origin: http://tap-gui.$DOMAIN
+tap_gui:
+  service_type: ClusterIP
+  ingressEnabled: "true"
+  ingressDomain: "$DOMAIN"
+  app_config:
+    app:
+      baseUrl: http://tap-gui.$DOMAIN
+    catalog:
+      locations:
+        - type: url
+          target: https://github.com/benwilcock/tap-gui-blank-catalog/blob/main/catalog-info.yaml
+    backend:
+      baseUrl: http://tap-gui.$DOMAIN
+      cors:
+        origin: http://tap-gui.$DOMAIN
 
 metadata_store:
   app_service_type: LoadBalancer # (optional) Defaults to LoadBalancer. Change to NodePort for distributions that don't support LoadBalancer
