@@ -20,6 +20,7 @@ tanzu package installed get tap -n ${TAP_NAMESPACE}
 kubectl get pkgi buildservice -oyaml -n ${TAP_NAMESPACE}
 kubectl get pkgi learningcenter-workshops -oyaml -n ${TAP_NAMESPACE}
 kubectl get pkgi tap -oyaml -n ${TAP_NAMESPACE}
+kubectl describe packageinstall buildservice -n tap-install
 
 # Getting settings schemas
 tanzu package installed list -A

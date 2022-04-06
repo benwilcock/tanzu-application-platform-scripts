@@ -37,17 +37,25 @@ tanzu package repository add tanzu-tap-repository \
   --url $INSTALL_REGISTRY_HOSTNAME/tanzu-application-platform/tap-packages:$TAP_VERSION \
   --namespace $TAP_NAMESPACE 
 
-yes_or_no "Create your TAP Values file (tap-values.yml) using your settings?" \
-  && curl -o tap-values.tmp https://raw.githubusercontent.com/benwilcock/tanzu-application-platform-scripts/main/minikube-win/template-tap-values.yml \ 
-  && envsubst < tap-values.tmp > tap-values.yml
+# Create a TAP values file from the template using the environment variables.
+prompt "Creating a tap-values.yml file using the current ENVIRONMENT variables."
+curl -o tap-values.tmp https://raw.githubusercontent.com/benwilcock/tanzu-application-platform-scripts/main/minikube-linux/template-tap-values.yml 
+envsubst < tap-values.tmp > tap-values.yml
+
+yes_or_no "Print your tap-values.yml file here (contains passwords)?" && \
+  cat tap-values.yml
 
 # Install the TAP packages to Kubernetes
 echo -en ${DING}
-yes_or_quit "Install TAP (takes 30 mins or more, needs lots of CPU, Memory and Network resources). Continue?" \
-  && tanzu package install tap -p tap.tanzu.vmware.com -v $TAP_VERSION \
-      --values-file tap-values.yml \
-      --namespace $TAP_NAMESPACE
+yes_or_no "Installing Tanzu Application Platform (takes 30 mins or more, needs lots of CPU, Memory and Network resources). Continue?" && \
+  tanzu package install tap -p tap.tanzu.vmware.com -v $TAP_VERSION \
+    --values-file tap-values.yml \
+    --poll-timeout 45m \
+    --namespace $TAP_NAMESPACE
 
 # Watch the progress of the installation
-yes_or_quit "Would you like to watch the Reconciliation progress?" && \
-watch --color "tanzu package installed list -A; echo -e '${GREEN}When ALL packages have a STATUS of 'Reconcile Succeeded', press Ctrl-C to exit and run the stage-5 script.${NC}'"
+yes_or_no "Check the Reconciliation progress?" && \
+  watch --color "tanzu package installed list -A; echo -e '${GREEN}When ALL packages have a STATUS of 'Reconcile Succeeded', press Ctrl-C to exit and run the stage-5 script.${NC}'"
+
+yes_or_no "Delete the tap-values.yml file (contains passwords)?" && \
+  rm tap-values.yml tap-values.tmp
