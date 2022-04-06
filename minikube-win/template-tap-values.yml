@@ -1,4 +1,4 @@
-profile: light
+profile: iterate
 ceip_policy_disclosed: true # Installation fails if this is set to 'false'
 
 buildservice:
