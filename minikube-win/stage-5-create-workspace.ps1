@@ -14,10 +14,10 @@ switch ($result) {
   }
 }
 
-# Set the Kubernetes namespace to use as the developer workspace.
-$Env:TAP_DEV_NAMESPACE = "default" 
+# Load the ENVIRONMENT VARIABLES
+. .\settings.ps1
 
-# Bring in the environment variables for the chosen REPO type
+# Load the SECRETS for the chosen REPO type
 . .\secret-$Env:REPOSITORY_TYPE-tap-env.ps1
 
 # Create a namespace for the developer to work in 
@@ -30,10 +30,10 @@ tanzu secret registry add registry-credentials `
   --password $env:DOCKER_PASSWORD `
   --namespace $env:TAP_DEV_NAMESPACE 
 
-# Obtain the service accounts file 
-curl.exe -o serviceaccounts.yml https://raw.githubusercontent.com/benwilcock/tanzu-application-platform-scripts/main/minikube-win/serviceaccounts.yml 
+# Download the service accounts file 
+curl.exe -o serviceaccounts.yml https://raw.githubusercontent.com/benwilcock/TAPonLAP/main/TAPonLAPv1.1/serviceaccounts.yml 
 
 # Add the necessary RBAC Roles, Accounts, Bindings etc... 
-kubectl -n $env:TAP_DEV_NAMESPACE apply -f "serviceaccounts.yml" 
+kubectl --namespace $env:TAP_DEV_NAMESPACE apply -f "serviceaccounts.yml" 
 
 Write-Host "Next, run the stage-6 script." -ForegroundColor DarkGreen -BackgroundColor Black

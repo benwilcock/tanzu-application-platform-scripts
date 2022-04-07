@@ -7,3 +7,5 @@ tanzu-cli
 **/*secret*
 **/tanzu-cluster-essentials*
 **/tanzu-framework*
+**/tap-values.yml
+**/serviceaccounts.yml

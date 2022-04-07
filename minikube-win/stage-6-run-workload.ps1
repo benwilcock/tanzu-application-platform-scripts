@@ -14,8 +14,8 @@ switch ($result) {
   }
 }
 
-# Set the developer namespace environment variable
-$Env:TAP_DEV_NAMESPACE = "default" 
+# Load the ENVIRONMENT VARIABLES
+. .\settings.ps1
 
 # Schedule a workload to run - this may take several minutes
 tanzu apps workload create tanzu-java-web-app `
@@ -25,6 +25,8 @@ tanzu apps workload create tanzu-java-web-app `
   --label app.kubernetes.io/part-of=tanzu-java-web-app `
   --label tanzu.app.live.view=true `
   --label tanzu.app.live.view.application.name=tanzu-java-web-app `
+  --label tanzu.app.live.view.application.name=tanzu-java-web-app `
+  --annotation autoscaling.knative.dev/minScale=1 `
   --namespace $env:TAP_DEV_NAMESPACE `
   --yes 
 
