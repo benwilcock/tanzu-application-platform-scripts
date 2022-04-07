@@ -39,8 +39,8 @@ tanzu package repository add tanzu-tap-repository \
 
 # Create a TAP values file from the template using the environment variables.
 prompt "Creating a tap-values.yml file using the current ENVIRONMENT variables."
-curl -o tap-values.tmp https://raw.githubusercontent.com/benwilcock/tanzu-application-platform-scripts/main/minikube-linux/template-tap-values.yml 
-envsubst < tap-values.tmp > tap-values.yml
+curl -o template-tap-values.yml https://raw.githubusercontent.com/benwilcock/TAPonLAP/main/TAPonLAPv1.1/template-tap-values-nix.yml
+envsubst < template-tap-values.yml > tap-values.yml
 
 yes_or_no "Print your tap-values.yml file here (contains passwords)?" && \
   cat tap-values.yml

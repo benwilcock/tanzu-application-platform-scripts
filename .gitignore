@@ -9,3 +9,4 @@ tanzu-cli
 **/tanzu-framework*
 **/tap-values.yml
 **/serviceaccounts.yml
+**/template-tap-values.yml

@@ -26,7 +26,7 @@ tanzu secret registry add registry-credentials \
   --namespace ${TAP_DEV_NAMESPACE} 
 
 # Obtain the service accounts file 
-curl -o serviceaccounts.yml https://raw.githubusercontent.com/benwilcock/tanzu-application-platform-scripts/main/minikube-win/serviceaccounts.yml 
+curl -o serviceaccounts.yml https://raw.githubusercontent.com/benwilcock/TAPonLAP/main/TAPonLAPv1.1/serviceaccounts.yml
 
 # Add the necessary RBAC Roles, Accounts, Bindings etc... 
 kubectl -n ${TAP_DEV_NAMESPACE} apply -f "serviceaccounts.yml" 
