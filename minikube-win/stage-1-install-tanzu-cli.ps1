@@ -33,6 +33,15 @@ cd tanzu-framework-windows-amd64
 # Create a new home for the Tanzu CLI in "Program Files"
 mkdir -Force "C:\Program Files\tanzu" 
 
+# Add the location to current path (temporary)
+$Env:PATH += ";C:\Program Files\tanzu"
+
+# Add the folder to the PATH permanently
+$oldPath = [Environment]::GetEnvironmentVariable('Path', [EnvironmentVariableTarget]::Machine)
+if ($oldPath.Split(';') -inotcontains 'C:\Program Files\tanzu'){ `
+  [Environment]::SetEnvironmentVariable('Path', $('{0};C:\Program Files\tanzu' -f $oldPath), [EnvironmentVariableTarget]::Machine) `
+}
+
 # Copy the Tanzu CLI tool to Program Files
 cp -Force "cli\core\$Env:TANZU_CLI_VERSION\tanzu-core-windows_amd64.exe" "C:\Program Files\tanzu\tanzu.exe" 
 
