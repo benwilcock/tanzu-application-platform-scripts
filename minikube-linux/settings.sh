@@ -6,7 +6,7 @@
 export MINIKUBE_VM_DRIVER="kvm2" # "kvm2" or "docker" (Fedora prefers kvm2)
 
 # Specify the version of TAP you wish to install
-export TAP_VERSION='1.1.0-build.17' # "1.0.2" # "1.0.1" "1.0.0"
+export TAP_VERSION='1.1.0' # "1.0.2" # "1.0.1" "1.0.0"
 
 # Specify the version of the Tanzu CLI being installed
 export TANZU_CLI_VERSION="v0.11.2" # This is a folder path used by the installer.

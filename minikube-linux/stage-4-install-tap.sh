@@ -58,4 +58,4 @@ yes_or_no "Check the Reconciliation progress?" && \
   watch --color "tanzu package installed list -A; echo -e '${GREEN}When ALL packages have a STATUS of 'Reconcile Succeeded', press Ctrl-C to exit and run the stage-5 script.${NC}'"
 
 yes_or_no "Delete the tap-values.yml file (contains passwords)?" && \
-  rm tap-values.yml tap-values.tmp
+  rm tap-values.yml template-tap-values.yml

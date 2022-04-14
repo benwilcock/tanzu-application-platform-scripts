@@ -13,7 +13,7 @@ yes_or_no "Run Spring Boot Admin?" \
         --git-branch main \
         --type web \
         --label app.kubernetes.io/part-of=spring-boot-admin \
-        --label tanzu.app.live.view=true \
+        --label tanzu.app.live.view=false \
         --label tanzu.app.live.view.application.name=spring-boot-admin \
         --annotation autoscaling.knative.dev/minScale=1 \
         --namespace $TAP_DEV_NAMESPACE \
@@ -26,6 +26,7 @@ yes_or_no "Run Spring Config Server?" \
         --git-branch main \
         --type web \
         --label app.kubernetes.io/part-of=spring-config-server \
+        --label tanzu.app.live.view=false \
         --annotation autoscaling.knative.dev/minScale=1 \
         --namespace $TAP_DEV_NAMESPACE \
         --env "NAMESPACE=$TAP_DEV_NAMESPACE" \
@@ -39,6 +40,8 @@ yes_or_no "Run Tanzu Java Web App (With Spring Boot Admin Integration)?" \
         --git-branch main \
         --type web \
         --label app.kubernetes.io/part-of=tanzu-java-web-app \
+        --label tanzu.app.live.view=false \
+        --annotation autoscaling.knative.dev/minScale=1 \
         --namespace $TAP_DEV_NAMESPACE \
         --env "NAMESPACE=$TAP_DEV_NAMESPACE" \
         --env "DOMAIN=$APPS_DOMAIN" \

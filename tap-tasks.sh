@@ -60,3 +60,6 @@ kubectl get secret registry-credentials -o jsonpath='{.data.\.dockerconfigjson}'
 
 # Restart stuff
 kubectl rollout restart deployment server --namespace tap-gui
+
+# Watch workload get built
+tanzu apps workload tail tanzu-java-web-app --since 10m --timestamp 
