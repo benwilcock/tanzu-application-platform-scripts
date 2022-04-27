@@ -10,3 +10,4 @@ tanzu-cli
 **/tap-values.yml
 **/serviceaccounts.yml
 **/template-tap-values.yml
+**/*.vsix

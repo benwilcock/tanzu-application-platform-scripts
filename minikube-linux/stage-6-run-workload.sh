@@ -8,14 +8,14 @@
 source ./helper.sh
 
 # Describe the stage
-title "Stage 6 - Run A Developer Workload on TAP." 
+title "Stage 6 - Run A Workload on TAP." 
 
 # Run the workload?
-sub_title "This script creates a developer workload for you. This can take a while the first time you do it."
+sub_title "This script deploys a test workload. This can take several minutes."
 
 yes_or_quit "Continue?"
 
-# Schedule a workload to run - this may take several minutes
+# Schedule a workload to run - this may take a while
 tanzu apps workload create tanzu-java-web-app \
   --git-repo https://github.com/sample-accelerators/tanzu-java-web-app \
   --git-branch main \
@@ -29,7 +29,18 @@ tanzu apps workload create tanzu-java-web-app \
 
 # Watch the workload as it deploys
 yes_or_quit "Would you like to watch the workload become ready?"
-watch --color "tanzu apps workload get tanzu-java-web-app; echo -e '${GREEN}Wait for the Workload to become ${WHITE}READY${GREEN} and get a ${WHITE}URL${GREEN}. Then press Ctrl-C and run the stage-7 script.${NC}'"
+watch --color "tanzu apps workload get tanzu-java-web-app; echo -e '${GREEN}Wait for the Workload to become ${WHITE}READY${GREEN} and get a ${WHITE}URL${GREEN}. Then press Ctrl-C.${NC}'"
+
+# Adding the application URL entry to /etc/hosts (needs sudo)
+export ENVOY="$(minikube ip)"
+export HOSTS="tanzu-java-web-app.${APPS_DOMAIN}"
+message "You must now add ${GREEN}${ENVOY} ${HOSTS}${NC} to your '/etc/hosts' file."
+message "This will enable http requests to be routed to your test application."
+echo ${ENVOY} ${HOSTS} | xclip -selection c
+yes_or_no "Opening /etc/hosts in Nano (as sudo). Use Ctrl+Shift+V to add the new line. Ctrl-X to exit Nano and Y to save changes. Ready?" \
+  && sudo nano /etc/hosts
+
+prompt "Next, run the stage-7 script to test the workload."
 
 # Checking deplyoment
 # kubectl describe runnable.carto.run/tanzu-java-web-app
