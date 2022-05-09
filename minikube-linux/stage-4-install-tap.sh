@@ -9,53 +9,59 @@ source ./helper.sh
 
 # Describe the stage
 title "Stage 4 - Install the Tanzu Application Platform (TAP)." 
-sub_title "This script will install TAP version ${GREEN}${TAP_VERSION}${WHITE} to Kubernetes with your images stored in ${GREEN}${REPOSITORY_TYPE}${NC}."
+sub_title "This script will install TAP version ${GREEN}${TAP_VERSION}${WHITE} to Kubernetes with your images stored in ${GREEN}${BUILD_REGISTRY_HOSTNAME}${NC}."
 
 # Make sure you know DockerHub has its limits.
-if [ "$REPOSITORY_TYPE" = "dockerhub" ]; then
+if [ "$BUILD_REGISTRY_HOSTNAME" = "index.docker.io" ]; then
     echo -e "${NC}DockerHub has limits for FREE accounts. You may struggle to install TAP or get issues later."
 fi
 
-yes_or_quit "Adding namespace, registry secrets, and repository records. Continue?"
+# Download a template for tap-values.
+curl -o template-tap-values.yml https://raw.githubusercontent.com/benwilcock/TAPonLAP/main/TAPonLAPv1.2/template-tap-values-nix-${TAP_PROFILE}.yml
 
-export TAP_NAMESPACE="tap-install"
+# Substitute the current environment variables into the template to create a tap-values.yml file
+prompt "Creating a tap-values.yml file using the current ENVIRONMENT variables."
+envsubst < template-tap-values.yml > tap-values.yml
+
+# Check your values before proceeding
+yes_or_no "Would you like to view your tap-values.yml file (contains passwords)?" && \
+  bat tap-values.yml
+
+yes_or_quit "Add installation namespace, registry secrets, and repository records. Continue?"
 
 # Create the install namespace
-kubectl create ns $TAP_NAMESPACE 
+kubectl create ns $TAP_INSTALL_NAMESPACE 
 
 # Add a secret for the TAP image registry (required to install)
 tanzu secret registry add tap-registry \
   --username $INSTALL_REGISTRY_USERNAME \
   --password $INSTALL_REGISTRY_PASSWORD \
   --server $INSTALL_REGISTRY_HOSTNAME \
-  --namespace $TAP_NAMESPACE \
+  --namespace $TAP_INSTALL_NAMESPACE \
   --export-to-all-namespaces \
   --yes 
 
 # Add a package repository record for the TAP image registry (required to install)
 tanzu package repository add tanzu-tap-repository \
   --url $INSTALL_REGISTRY_HOSTNAME/tanzu-application-platform/tap-packages:$TAP_VERSION \
-  --namespace $TAP_NAMESPACE 
-
-# Create a TAP values file from the template using the environment variables.
-prompt "Creating a tap-values.yml file using the current ENVIRONMENT variables."
-curl -o template-tap-values.yml https://raw.githubusercontent.com/benwilcock/TAPonLAP/main/TAPonLAPv1.1/template-tap-values-nix.yml
-envsubst < template-tap-values.yml > tap-values.yml
-
-yes_or_no "Print your tap-values.yml file here (contains passwords)?" && \
-  cat tap-values.yml
+  --namespace $TAP_INSTALL_NAMESPACE 
 
 # Install the TAP packages to Kubernetes
-echo -en ${DING}
-yes_or_no "Installing Tanzu Application Platform (takes 30 mins or more, needs lots of CPU, Memory and Network resources). Continue?" && \
-  tanzu package install tap -p tap.tanzu.vmware.com -v $TAP_VERSION \
-    --values-file tap-values.yml \
-    --poll-timeout 45m \
-    --namespace $TAP_NAMESPACE
+yes_or_quit "Install Tanzu Application Platform (takes 30 mins or more, needs lots of CPU, Memory and Network resources). Continue?"
 
-# Watch the progress of the installation
-yes_or_no "Check the Reconciliation progress?" && \
+# Install Tanzu Application Platform
+tanzu package install tap -p tap.tanzu.vmware.com -v $TAP_VERSION \
+  --values-file tap-values.yml \
+  --poll-timeout 60m \
+  --namespace $TAP_INSTALL_NAMESPACE
+
+# Watch the result of the installation
+yes_or_no "Watch the Tanzu Application Platform reconciliation status?" && \
   watch --color "tanzu package installed list -A; echo -e '${GREEN}When ALL packages have a STATUS of 'Reconcile Succeeded', press Ctrl-C to exit and run the stage-5 script.${NC}'"
 
-yes_or_no "Delete the tap-values.yml file (contains passwords)?" && \
+# Remove the TAP values files?
+yes_or_no "Delete the tap-values files (contain passwords & settings)?" && \
   rm tap-values.yml template-tap-values.yml
+
+# Finished
+prompt "You can now run the stage-5 script."

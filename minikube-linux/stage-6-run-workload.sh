@@ -23,7 +23,6 @@ tanzu apps workload create tanzu-java-web-app \
   --label app.kubernetes.io/part-of=tanzu-java-web-app \
   --label tanzu.app.live.view=true \
   --label tanzu.app.live.view.application.name=tanzu-java-web-app \
-  --annotation autoscaling.knative.dev/minScale=1 \
   --namespace $TAP_DEV_NAMESPACE \
   --yes 
 
@@ -31,14 +30,14 @@ tanzu apps workload create tanzu-java-web-app \
 yes_or_quit "Would you like to watch the workload become ready?"
 watch --color "tanzu apps workload get tanzu-java-web-app; echo -e '${GREEN}Wait for the Workload to become ${WHITE}READY${GREEN} and get a ${WHITE}URL${GREEN}. Then press Ctrl-C.${NC}'"
 
-# Adding the application URL entry to /etc/hosts (needs sudo)
-export ENVOY="$(minikube ip)"
-export HOSTS="tanzu-java-web-app.${APPS_DOMAIN}"
-message "You must now add ${GREEN}${ENVOY} ${HOSTS}${NC} to your '/etc/hosts' file."
-message "This will enable http requests to be routed to your test application."
-echo ${ENVOY} ${HOSTS} | xclip -selection c
-yes_or_no "Opening /etc/hosts in Nano (as sudo). Use Ctrl+Shift+V to add the new line. Ctrl-X to exit Nano and Y to save changes. Ready?" \
-  && sudo nano /etc/hosts
+# # Adding the application URL entry to /etc/hosts (needs sudo)
+# export ENVOY="$(minikube ip)"
+# export HOSTS="tanzu-java-web-app.${APPS_DOMAIN}"
+# message "You must now add ${GREEN}${ENVOY} ${HOSTS}${NC} to your '/etc/hosts' file."
+# message "This will enable http requests to be routed to your test application."
+# echo ${ENVOY} ${HOSTS} | xclip -selection c
+# yes_or_no "Opening /etc/hosts in Nano (as sudo). Use Ctrl+Shift+V to add the new line. Ctrl-X to exit Nano and Y to save changes. Ready?" \
+#   && sudo nano /etc/hosts
 
 prompt "Next, run the stage-7 script to test the workload."
 

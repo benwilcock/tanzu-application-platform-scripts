@@ -1,8 +1,9 @@
 #!/bin/bash
 
-source ../minikube-linux/helper.sh
+source ./helper.sh
 
 export JVM_OPTS="-Dmanagement.server.port=8080"
+export APPS_DOMAIN="$APPS_DOMAIN_PREFIX.$MINIKUBE_IP.$DOMAIN"
 
 ##################################
 # Add some Workloads to TAP
@@ -19,6 +20,8 @@ yes_or_no "Run Spring Boot Admin?" \
         --label tanzu.app.live.view.application.name=spring-boot-admin \
         --annotation autoscaling.knative.dev/minScale=1 \
         --namespace $TAP_DEV_NAMESPACE \
+        --env "NAMESPACE=$TAP_DEV_NAMESPACE" \
+        --env "DOMAIN=$APPS_DOMAIN" \
         --env "JAVA_TOOL_OPTIONS=$JVM_OPTS" \
         --yes 
 
@@ -45,7 +48,7 @@ yes_or_no "Run Tanzu Java Web App (With Spring Boot Admin Integration)?" \
         --git-branch main \
         --type web \
         --label app.kubernetes.io/part-of=tanzu-java-web-app \
-        --label tanzu.app.live.view=false \
+        --label tanzu.app.live.view=true \
         --annotation autoscaling.knative.dev/minScale=1 \
         --namespace $TAP_DEV_NAMESPACE \
         --env "NAMESPACE=$TAP_DEV_NAMESPACE" \
@@ -65,13 +68,13 @@ yes_or_no "Run Spring Pet Clinic App (from a Docker Image)?" \
   --yes
 
 # Adding the host entries to the hosts file (needs sudo)
-export ENVOY="$(minikube ip)"
-export HOSTS="spring-boot-admin.${TAP_DEV_NAMESPACE}.${APPS_DOMAIN} spring-config-server.${TAP_DEV_NAMESPACE}.${APPS_DOMAIN} tanzu-java-web-app.${TAP_DEV_NAMESPACE}.${APPS_DOMAIN}"
-message "You must add ${GREEN}'${ENVOY} ${HOSTS}'${NC} to your '/etc/hosts' file."
-message "This will enable http requests to be routed to your applications."
-echo ${ENVOY} ${HOSTS} | xclip -selection c
-yes_or_no "Opening /etc/hosts in Nano (needs sudo) for you. Use Ctrl+Shift+V to add the new line. Ctrl-X to exit Nano. Ready?" \
-  && sudo nano /etc/hosts
+# export ENVOY="$(minikube ip)"
+# export HOSTS="spring-boot-admin.${TAP_DEV_NAMESPACE}.${APPS_DOMAIN} spring-config-server.${TAP_DEV_NAMESPACE}.${APPS_DOMAIN} tanzu-java-web-app.${TAP_DEV_NAMESPACE}.${APPS_DOMAIN}"
+# message "You must add ${GREEN}'${ENVOY} ${HOSTS}'${NC} to your '/etc/hosts' file."
+# message "This will enable http requests to be routed to your applications."
+# echo ${ENVOY} ${HOSTS} | xclip -selection c
+# yes_or_no "Opening /etc/hosts in Nano (needs sudo) for you. Use Ctrl+Shift+V to add the new line. Ctrl-X to exit Nano. Ready?" \
+#   && sudo nano /etc/hosts
 
 # # Working with apps
 yes_or_no "Watch the Workloads become READY?" \

@@ -12,7 +12,7 @@ title "Stage 8 - Tidy Up."
 
 # Stop Minikube but keep the VM & data intact (https://minikube.sigs.k8s.io/docs/commands/stop/)
 yes_or_no "Stop the minikube cluster (including TAP)?" \
-  && minikube stop \
+  && minikube stop -p ${MINIKUBE_PROFILE} \
   && alert "ALERT: Don't forget to also stop the Minikube Tunnel!" 
 
 ##########################################
@@ -21,7 +21,7 @@ yes_or_no "Stop the minikube cluster (including TAP)?" \
 
 # Delete the minikube cluster and everything it contains, including TAP.
 yes_or_no "Delete the Minikube cluster (including TAP)?" \
-  && minikube delete
+  && minikube delete -p ${MINIKUBE_PROFILE}
 
 # Remove Tanzu CLI
 yes_or_quit "Delete the Tanzu CLI? (needs sudo)?" 

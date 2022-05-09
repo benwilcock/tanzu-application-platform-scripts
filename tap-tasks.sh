@@ -2,10 +2,9 @@
 
 # To see your Minikube setup, use:
 minikube profile list
-# VM Driver: hyperv (VMware also works?)
-# Runtime: docker
 
-tanzu package installed list -A # List the status of all TAP's sub components
+# List the status of all TAP's sub components
+tanzu package installed list -A 
 
 # ************ Manual Step **************
 # TAP GUI - Import the workload catalog from https://github.com/benwilcock/tanzu-java-web-app
@@ -63,3 +62,19 @@ kubectl rollout restart deployment server --namespace tap-gui
 
 # Watch workload get built
 tanzu apps workload tail tanzu-java-web-app --since 10m --timestamp 
+
+# Find out the registered trainig portals
+kubectl get trainingportals
+
+# Find out what URL's the Leaning center is hosting
+kubectl get ingress -A
+
+# Update TAP version 1.1.0 with new tap-values.yml
+tanzu package installed update tap -p tap.tanzu.vmware.com -v 1.1.1 --values-file tap-values.yml -n tap-install
+
+# Remove and add TAP features (packageinstalls)
+tanzu package installed delete buildservice --namespace tap-install -y
+tanzu package installed create buildservice --package-name buildservice.tanzu.vmware.com --version 1.5.0 --namespace tap-install
+
+# Checking Minikube disk size and usage (KVM2)
+qemu-img info /home/ben/.minikube/machines/${TAP_PROFILE}/${TAP_PROFILE}.rawdisk
