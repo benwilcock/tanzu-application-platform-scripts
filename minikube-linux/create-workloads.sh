@@ -21,8 +21,11 @@ yes_or_no "Run Spring Boot Admin?" \
         --annotation autoscaling.knative.dev/minScale=1 \
         --namespace $TAP_DEV_NAMESPACE \
         --env "NAMESPACE=$TAP_DEV_NAMESPACE" \
+        --env "SBA_SLACK_WEBHOOK=$SBA_SLACK_WEBHOOK" \
         --env "DOMAIN=$APPS_DOMAIN" \
+        --env "INGRESS_PORT=$INGRESS_PORT" \
         --env "JAVA_TOOL_OPTIONS=$JVM_OPTS" \
+        --env "SPRING_PROFILES_ACTIVE=tap" \
         --yes 
 
 # Spring Config Server
@@ -37,6 +40,7 @@ yes_or_no "Run Spring Config Server?" \
         --namespace $TAP_DEV_NAMESPACE \
         --env "NAMESPACE=$TAP_DEV_NAMESPACE" \
         --env "DOMAIN=$APPS_DOMAIN" \
+        --env "INGRESS_PORT=$INGRESS_PORT" \
         --env "JAVA_TOOL_OPTIONS=$JVM_OPTS" \
         --env "SPRING_PROFILES_ACTIVE=tap" \
         --yes 
@@ -53,6 +57,7 @@ yes_or_no "Run Tanzu Java Web App (With Spring Boot Admin Integration)?" \
         --namespace $TAP_DEV_NAMESPACE \
         --env "NAMESPACE=$TAP_DEV_NAMESPACE" \
         --env "DOMAIN=$APPS_DOMAIN" \
+        --env "INGRESS_PORT=$INGRESS_PORT" \
         --env "JAVA_TOOL_OPTIONS=$JVM_OPTS" \
         --env "SPRING_PROFILES_ACTIVE=tap" \
         --yes

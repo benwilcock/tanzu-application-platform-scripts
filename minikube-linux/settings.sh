@@ -54,7 +54,7 @@ export TAP_INSTALL_NAMESPACE="tap-install"
 export TAP_DEV_NAMESPACE="default" 
 
 # Specify the NodePort to use for Envoy (Ingress)
-export INGRESS_PORT="31080"
+export INGRESS_PORT='31080'
 
 # Domain to use for general ingress
 export DOMAIN="nip.io"
