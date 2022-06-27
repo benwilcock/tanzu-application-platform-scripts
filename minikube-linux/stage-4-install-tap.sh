@@ -17,7 +17,7 @@ if [ "$BUILD_REGISTRY_HOSTNAME" = "index.docker.io" ]; then
 fi
 
 # Download a template for tap-values.
-curl -o template-tap-values.yml https://raw.githubusercontent.com/benwilcock/TAPonLAP/main/TAPonLAPv1.2/template-tap-values-nix-${TAP_PROFILE}.yml
+curl -v -o template-tap-values.yml https://raw.githubusercontent.com/benwilcock/TAPonLAP/main/TAPonLAPv1.2/template-tap-values-nix-${TAP_PROFILE}.yml
 
 # Substitute the current environment variables into the template to create a tap-values.yml file
 prompt "Creating a tap-values.yml file using the current ENVIRONMENT variables."

@@ -15,12 +15,9 @@ sub_title "This script makes a HTTP request to the workload running on TAP (requ
 # Test the workload?
 yes_or_quit "Test the workload?"
 
-# Get the Minikube IP
-export MINIKUBE_IP="$(minikube ip)"
-
 # Test the application is responding (may take a few seconds at first)
 message "Testing the workload by sending a request.\n" 
-RESPONSE="$(curl --silent http://tanzu-java-web-app.$TAP_DEV_NAMESPACE.apps.$MINIKUBE_IP.$DOMAIN)"
+RESPONSE="$(curl --silent http://tanzu-java-web-app.${TAP_DEV_NAMESPACE}.${APPS_DOMAIN_PREFIX}.${MINIKUBE_IP}.${DOMAIN})"
 message "Workload response: '${RESPONSE}'" 
 
 if [ "${RESPONSE}" = "Greetings from Spring Boot + Tanzu!" ]; then

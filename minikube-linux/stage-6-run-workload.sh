@@ -32,7 +32,7 @@ watch --color "tanzu apps workload get tanzu-java-web-app; echo -e '${GREEN}Wait
 
 # # Adding the application URL entry to /etc/hosts (needs sudo)
 # export ENVOY="$(minikube ip)"
-# export HOSTS="tanzu-java-web-app.${APPS_DOMAIN}"
+# export HOSTS="tanzu-java-web-app.${TAP_DEV_NAMESPACE}.${APPS_DOMAIN_PREFIX}.${DOMAIN}"
 # message "You must now add ${GREEN}${ENVOY} ${HOSTS}${NC} to your '/etc/hosts' file."
 # message "This will enable http requests to be routed to your test application."
 # echo ${ENVOY} ${HOSTS} | xclip -selection c
