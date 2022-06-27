@@ -25,3 +25,11 @@ if [ "${RESPONSE}" = "Greetings from Spring Boot + Tanzu!" ]; then
 else
     message "\n${RED}Oops! Your work here is not done! ${WHITE}:(${NC}";
 fi 
+
+# Create a convenient GUIs file
+yes_or_no "Would you like a tap-guis.html file for this installation?" && \
+  envsubst < tap-guis-template.html > tap-guis.html
+
+# Open GUIs in chrome
+yes_or_no "Open the tap-guis.html file in Google Chrome?" && \
+  nohup google-chrome --disable-gpu tap-guis.html &>/dev/null

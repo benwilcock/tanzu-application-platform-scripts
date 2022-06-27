@@ -3,13 +3,23 @@
     <title>Tanzu Application Platform - Apps & GUI's</title>
 </head>
 <body>
-    <p><a target="_blank" href="http://tap-gui.$MINIKUBE_IP.$DOMAIN:$INGRESS_PORT">Tap GUI</a></p>
+
+    <h1>Full Profile Installations:</h1>
+    <p><a target="_blank" href="http://tap-gui.$MINIKUBE_IP.$DOMAIN:$INGRESS_PORT">Tanzu Application Platform Dashboard</a> (full profile only)</p>
+    <p><a target="_blank" href="http://learning-center-guided.learningcenter.$MINIKUBE_IP.$DOMAIN">Learning Center</a> (only works in LoadBalancer setups!)</p>
+
+    <h1>Tanzu Java Web App (Official Sample)</h1>
+    <p><a target="_blank" href="http://tanzu-java-web-app.$TAP_DEV_NAMESPACE.apps.$MINIKUBE_IP.$DOMAIN:$INGRESS_PORT">Tanzu Java Web App</a></p>
+
+    <h1>Spring Boot Admin</h1>
     <p><a target="_blank" href="http://spring-boot-admin.$TAP_DEV_NAMESPACE.apps.$MINIKUBE_IP.$DOMAIN:$INGRESS_PORT">Spring Boot Admin</a></p>
+
+    <h1>Spring Config Server</h1>
     <p><a target="_blank" href="http://spring-config-server.$TAP_DEV_NAMESPACE.apps.$MINIKUBE_IP.$DOMAIN:$INGRESS_PORT/actuator/health">Spring Config Server (/actuator/health)</a></p>
     <p><a target="_blank" href="http://spring-config-server.$TAP_DEV_NAMESPACE.apps.$MINIKUBE_IP.$DOMAIN:$INGRESS_PORT/tanzu-java-web-app/tap">Spring Config Server (properties for tanzu-java-web-app with profile "tap")</a></p>
-    <p><a target="_blank" href="http://tanzu-java-web-app.$TAP_DEV_NAMESPACE.apps.$MINIKUBE_IP.$DOMAIN:$INGRESS_PORT">Tanzu Java Web App</a></p>
-    <p><a target="_blank" href="http://tanzu-java-web-app.$TAP_DEV_NAMESPACE.apps.$MINIKUBE_IP.$DOMAIN:$INGRESS_PORT/actuator/env">Tanzu Java Web App (/actuator/env)</a></p>
+    
+    <h1>Spring Pet Clinic</h1>
     <p><a target="_blank" href="http://petclinic-image-to-url.$TAP_DEV_NAMESPACE.apps.$MINIKUBE_IP.$DOMAIN:$INGRESS_PORT">Pet Clinic (Image to URL example)</a></p>
-    <p><a target="_blank" href="http://learning-center-guided.learningcenter.$MINIKUBE_IP.$DOMAIN">Learing Center</a></p>
+    
 </body>
 </html>

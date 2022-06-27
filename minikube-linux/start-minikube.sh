@@ -16,3 +16,5 @@ yes_or_no "(Re)Start the Minikube profile ${WHITE}${MINIKUBE_PROFILE}${YELLOW}?"
   && minikube start --kubernetes-version=${KUBERNETES_VERSION} --memory=${MINIKUBE_MEM} --cpus=${MINIKUBE_CPUS} --disk-size=${MINIKUBE_DISK} --driver=${MINIKUBE_VM_DRIVER} -p ${MINIKUBE_PROFILE}
 
 get_and_set_minikube_ip
+
+./guis-file.sh

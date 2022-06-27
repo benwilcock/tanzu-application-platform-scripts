@@ -27,7 +27,7 @@ envsubst < template-tap-values.yml > tap-values.yml
 yes_or_no "Would you like to view your tap-values.yml file (contains passwords)?" && \
   bat tap-values.yml
 
-yes_or_quit "Add installation namespace, registry secrets, and repository records. Continue?"
+yes_or_quit "Prepare the Tanzu Application Platform installation namespace, registry secrets, and repository records?"
 
 # Create the install namespace
 kubectl create ns $TAP_INSTALL_NAMESPACE 
@@ -47,7 +47,7 @@ tanzu package repository add tanzu-tap-repository \
   --namespace $TAP_INSTALL_NAMESPACE 
 
 # Install the TAP packages to Kubernetes
-yes_or_quit "Install Tanzu Application Platform (takes 30 mins or more, needs lots of CPU, Memory and Network resources). Continue?"
+yes_or_quit "Install Tanzu Application Platform (takes 30 mins or more, needs lots of CPU, Memory and Network resources)?"
 
 # Install Tanzu Application Platform
 tanzu package install tap -p tap.tanzu.vmware.com -v $TAP_VERSION \
