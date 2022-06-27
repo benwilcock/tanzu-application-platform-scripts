@@ -2,18 +2,12 @@
 # INSTALLING Tanzu Application Platform onto Kubernetes        #
 ################################################################
 
-# Choose where Built container images will go...
-$Env:REPOSITORY_TYPE = "harbor" # One of "dockerhub" "harbor" "local"
-
-# Specify the version of TAP to install
-$Env:TAP_VERSION = "1.1.0-build.9" # "1.1.0-build.5" # "1.0.1" "1.0.2-build.8"
-
 # Ask for permission to proceed.
 $yes = New-Object System.Management.Automation.Host.ChoiceDescription "&Yes","Description."
 $no = New-Object System.Management.Automation.Host.ChoiceDescription "&No","Description."
 $options = [System.Management.Automation.Host.ChoiceDescription[]]($yes, $no)
-$title = "Stage 4 - Install the Tanzu Application Platform (TAP)" 
-$message = "This script installs TAP $env:TAP_VERSION onto Kubernetes with your supply-chain container images being stored in $env:REPOSITORY_TYPE. Continue?"
+$title = "Stage 4 - Install the Tanzu Application Platform" 
+$message = "This script installs Tanzu Application Platform version $env:TAP_VERSION onto Kubernetes with container images being stored in $env:REPOSITORY_TYPE. Continue?"
 $result = $host.ui.PromptForChoice($title, $message, $options, 1)
 switch ($result) {
   1{
@@ -21,12 +15,20 @@ switch ($result) {
   }
 }
 
-# Namespace for the TAP installation components
-$Env:TAP_NAMESPACE = "tap-install"
+# Load the ENVIRONMENT VARIABLES
+. .\settings.ps1
+
+# Load the SECRET VARIABLES
 . .\secret-$Env:REPOSITORY_TYPE-tap-env.ps1
 
-# Print the environment variables
-dir env:
+# Remove the old tap-values files
+rm -Force tap-values.yml, template-tap-values.yml
+
+# Download the template tap-values file
+curl.exe -o template-tap-values.yml https://raw.githubusercontent.com/benwilcock/TAPonLAP/main/TAPonLAPv1.1/template-tap-values-win.yml
+
+# Create a new tap-values.yml file using the template
+gc template-tap-values.yml | foreach { [Environment]::ExpandEnvironmentVariables($_) } | sc tap-values.yml
 
 # Prepare the TAP install to Kubernetes
 kubectl create ns $env:TAP_NAMESPACE  
@@ -52,6 +54,7 @@ tanzu package repository get tanzu-tap-repository --namespace $env:TAP_NAMESPACE
 tanzu package available list tap.tanzu.vmware.com --namespace $env:TAP_NAMESPACE # Is tap.tanzu.vmware.com in the list?
 tanzu package available list --namespace $env:TAP_NAMESPACE # Do you see a big list of all TAP packages and versions?
 
+# Warn about Docker limits
 if ( $Env:REPOSITORY_TYPE -eq "dockerhub" )
 {
   Write-Host "DockerHub FREE has user pull limits. You may struggle to install TAP!" -ForegroundColor Blue -BackgroundColor Black
@@ -60,7 +63,8 @@ if ( $Env:REPOSITORY_TYPE -eq "dockerhub" )
 # Install the TAP packages to Kubernetes
 Write-Host "This may take 30 mins or more and use lots of compute and network resources. Go grap a coffee!" -ForegroundColor DarkGreen -BackgroundColor Black
 tanzu package install tap -p tap.tanzu.vmware.com -v $env:TAP_VERSION `
-  --values-file secret-$Env:REPOSITORY_TYPE-tap-values.yml `
+  --values-file tap-values.yml `
+  --poll-timeout 45m `
   --namespace $env:TAP_NAMESPACE
 
 $yes = New-Object System.Management.Automation.Host.ChoiceDescription "&Yes","Description."

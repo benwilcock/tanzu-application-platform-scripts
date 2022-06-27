@@ -11,7 +11,7 @@ source ./helper.sh
 title "Stage 5 - Create a Developer Workspace" 
 
 # Create the workspace?
-message "This script will create a developer workspace on TAP and add registry-credentials for $REPOSITORY_TYPE."
+message "This script will create a developer workspace on TAP and add the registry-credentials secret for $BUILD_REGISTRY_HOSTNAME."
 
 yes_or_quit "Continue?"
 
@@ -26,7 +26,7 @@ tanzu secret registry add registry-credentials \
   --namespace ${TAP_DEV_NAMESPACE} 
 
 # Obtain the service accounts file 
-curl -o serviceaccounts.yml https://raw.githubusercontent.com/benwilcock/tanzu-application-platform-scripts/main/minikube-win/serviceaccounts.yml 
+curl -o serviceaccounts.yml https://raw.githubusercontent.com/benwilcock/TAPonLAP/main/TAPonLAPv1.2/serviceaccounts.yml
 
 # Add the necessary RBAC Roles, Accounts, Bindings etc... 
 kubectl -n ${TAP_DEV_NAMESPACE} apply -f "serviceaccounts.yml" 

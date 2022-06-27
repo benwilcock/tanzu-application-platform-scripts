@@ -53,16 +53,30 @@ function message {
     echo -e "${NC}$1${NC}"
 }
 
-function check_file {
+# Checking if a file exists
+# function check_file {
 
-    DIR="${BASH_SOURCE%/*}"
-    if [[ ! -d "$DIR" ]]; then DIR="$PWD"; fi
-    FILE="$DIR/$1"
+#     DIR="${BASH_SOURCE%/*}"
+#     if [[ ! -d "$DIR" ]]; then DIR="$PWD"; fi
+#     FILE="$DIR/$1"
 
-    if [ -f $FILE ]; then
-        return 0;
-    else 
-        echo -e "${WHITE}Failed the file check. The file ${RED}${FILE}${WHITE} is missing!${NC}"
-        exit
-    fi
+#     if [ -f $FILE ]; then
+#         return 0;
+#     else 
+#         echo -e "${WHITE}Failed the file check. The file ${RED}${FILE}${WHITE} is missing!${NC}"
+#         exit
+#     fi
+# }
+
+# Getting and setting the Minikube IP env variable
+function get_and_set_minikube_ip {
+
+    IP="$(minikube ip -p $MINIKUBE_PROFILE)" > /dev/null
+    if [[ $? -eq 0 ]]; then
+        export MINIKUBE_IP="${IP}"
+        message "The IP for the Minikube profile ${GREEN}${MINIKUBE_PROFILE}${NC} is: ${GREEN}${MINIKUBE_IP}${NC}"
+    else
+        export MINIKUBE_IP="xxx.xxx.xxx.xxx"
+        alert "The MINIKUBE_IP variable could not be set properly. Is Minikube running?"
+    fi 
 }

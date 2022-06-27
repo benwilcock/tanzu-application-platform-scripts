@@ -7,3 +7,8 @@ tanzu-cli
 **/*secret*
 **/tanzu-cluster-essentials*
 **/tanzu-framework*
+**/tap-values*
+**/serviceaccounts.yml
+**/template-tap-values.yml
+**/*.vsix
+**/tap-auth-plugin*.tar.gz

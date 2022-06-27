@@ -17,15 +17,17 @@ switch ($result) {
 }
 
 # TAP Works with Kubernetes  1.20, 1.21, or 1.22
-minikube start --kubernetes-version='1.22.6' --cpus='8'  
+minikube start --kubernetes-version='1.22.8' --cpus='8' --memory='12g' --driver='hyperv' 
 
 # Add a host entry for each app behind the tunnel (Windows 8 - 10)
 # When Notepad opens, add to the hosts file...
 # <your.minikube.ip.address> tap-gui.example.com tanzu-java-web-app.default.apps.example.com
 # Find the IP address for Minikube
 $env:minikubeip = minikube ip
-Write-Host "Next, I'll open Notepad so you can add the following line:" -ForegroundColor DarkGreen -BackgroundColor Black
-Write-Host "$env:minikubeip tap-gui.example.com tanzu-java-web-app.default.apps.example.com" -ForegroundColor Blue -BackgroundColor Black
+Write-Host "Next, I'll open your hosts file in Notepad so you can add the following line:" -ForegroundColor DarkGreen -BackgroundColor Black
+Write-Host "$env:minikubeip tanzu-java-web-app.default.apps.example.com" -ForegroundColor Blue -BackgroundColor Black
+Write-Host "Don't forget to save the file after you've edited it!" -ForegroundColor DarkGreen -BackgroundColor Black
+
 
 # Opening the hosts file in Notepad as Admin user...
 Start-Process notepad -Verb runas "c:\Windows\System32\Drivers\etc\hosts"

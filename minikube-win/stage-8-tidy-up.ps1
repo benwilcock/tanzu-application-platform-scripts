@@ -3,7 +3,18 @@
 ##########################################
 
 # Stop Minikube but keep the VM & data intact (https://minikube.sigs.k8s.io/docs/commands/stop/)
-minikube stop
+$yes = New-Object System.Management.Automation.Host.ChoiceDescription "&Yes","Description."
+$no = New-Object System.Management.Automation.Host.ChoiceDescription "&No","Description."
+$options = [System.Management.Automation.Host.ChoiceDescription[]]($yes, $no)
+$title = "Stop the Minikube Cluster?" 
+$message = "Would you like to stop the minikube cluster?"
+$result = $host.ui.PromptForChoice($title, $message, $options, 1)
+switch ($result) {
+  0{
+    # Stop the minikube cluster.
+    minikube stop
+  }
+}
 
 ##########################################
 # Complete Removal (Optional)            #
@@ -31,6 +42,6 @@ $result = $host.ui.PromptForChoice($title, $message, $options, 1)
 switch ($result) {
   0{
     # Remove Tanzu CLI
-    rmdir  "C:\Program Files\tanzu" # Needs admin 
+    rmdir -Recurse "C:\Program Files\tanzu" # Needs admin 
   }
 }

@@ -29,7 +29,7 @@ function install_tce {
   rm -rf ./tanzu-cluster-essentials
 }
 
-# TAP Needs Kubernetes 1.20, 1.21, or 1.22
+# Install Cluster Essentials for VMware Tanzu?
 yes_or_no "Install Cluster Essentials for VMware Tanzu?" \
   && install_tce
 
