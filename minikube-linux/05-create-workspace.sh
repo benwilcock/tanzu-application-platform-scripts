@@ -31,4 +31,3 @@ curl -o serviceaccounts.yml https://raw.githubusercontent.com/benwilcock/TAPonLA
 # Add the necessary RBAC Roles, Accounts, Bindings etc... 
 kubectl -n ${TAP_DEV_NAMESPACE} apply -f "serviceaccounts.yml" 
 
-prompt "Next, run the stage-6 script."

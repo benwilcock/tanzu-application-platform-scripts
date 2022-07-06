@@ -33,6 +33,4 @@ function install_tce {
 yes_or_no "Install Cluster Essentials for VMware Tanzu?" \
   && install_tce
 
-# Finished
 echo -en ${DING}
-prompt "You can now run the stage-4 script."

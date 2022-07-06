@@ -6,7 +6,7 @@
 export CLI_FILE="tanzu-framework-linux-amd64.tar"
 
 # Specify the KUBERNETES version to use in Minikube
-export KUBERNETES_VERSION="1.22.10"
+export KUBERNETES_VERSION="1.22.11"
 
 # Specify the Minikube VM driver to use
 export MINIKUBE_VM_DRIVER="kvm2" # "kvm2" or "docker" (Fedora prefers kvm2)
@@ -21,7 +21,7 @@ export MINIKUBE_MEM="32g"
 export MINIKUBE_CPUS="8"
 
 # Specify the version of TAP you wish to install
-export TAP_VERSION='1.2.0-build.14' #'1.1.1' # "1.1.0"
+export TAP_VERSION='1.2.0-build.18' #'1.1.1' # "1.1.0"
 
 # Specify the TAP profile (controls the tap-values.yml template choice)
 export TAP_PROFILE='full' # full, iterate, etc.
@@ -71,3 +71,6 @@ export TCE_FILE="tanzu-cluster-essentials-linux-amd64-1.1.0.tgz"
 
 # This variable is needed by the Cluster Essentials for VMware Tanzu installer to identify the imgpkg bundle to use.
 export INSTALL_BUNDLE="registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:ab0a3539da241a6ea59c75c0743e9058511d7c56312ea3906178ec0f3491f51d"
+
+# This variable is used by the App Accelerator IDE Plugins
+export ACC_SERVER_URL="http://localhost:8877"

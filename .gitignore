@@ -11,4 +11,6 @@ tanzu-cli
 **/serviceaccounts.yml
 **/template-tap-values.yml
 **/*.vsix
-**/tap-auth-plugin*.tar.gz
+**/*.gz
+**/*.zip
+**/*.tar

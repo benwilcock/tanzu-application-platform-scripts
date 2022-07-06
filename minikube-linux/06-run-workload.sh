@@ -28,10 +28,8 @@ tanzu apps workload create tanzu-java-web-app \
 
 # Watch the workload as it deploys
 yes_or_quit "Would you like to watch the workload become ready?"
-watch --color "tanzu apps workload get tanzu-java-web-app; echo -e '${GREEN}Wait for the Workload to get a ${WHITE}URL${GREEN}. Then press Ctrl-C.${NC}'"
+watch --color "tanzu apps workload get tanzu-java-web-app; echo -e '${GREEN}Wait for KNative Services to report a ${WHITE}Ready${GREEN} state and provide a ${WHITE}URL${GREEN}. Then press Ctrl-C.${NC}'"
 
 # Checking deplyoment
 kubectl describe runnable.carto.run/tanzu-java-web-app
 
-# Move on...
-prompt "Next, run the stage-7 script to test the workload."

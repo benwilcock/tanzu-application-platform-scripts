@@ -10,6 +10,10 @@ source ./helper.sh
 # Describe the stage
 title "Stage 8 - Tidy Up." 
 
+# Remove all workloads?
+yes_or_no "Delete all running workloads?" \
+  && tanzu apps workload delete --all --yes
+
 # Stop Minikube but keep the VM & data intact (https://minikube.sigs.k8s.io/docs/commands/stop/)
 yes_or_no "Stop the minikube cluster (including TAP)?" \
   && minikube stop -p ${MINIKUBE_PROFILE}

@@ -81,6 +81,10 @@ tanzu package installed create learningcenter --package-name learningcenter.tanz
 tanzu package installed delete learningcenter-workshops --namespace tap-install -y
 tanzu package installed create learningcenter-workshops --package-name learningcenter-workshops.tanzu.vmware.com --version 0.2.1 --namespace tap-install
 
-
 # Checking Minikube disk size and usage (KVM2)
 qemu-img info /home/ben/.minikube/machines/${TAP_PROFILE}/${TAP_PROFILE}.rawdisk
+
+# App Accelerator Plugin Setup
+kubectl port-forward service/acc-server -n accelerator-system 8877:80 # API URL would be http://localhost:8877 or set ACC_SERVER_URL
+export TAP_LIVE_HOVER=true
+export ACC_SERVER_URL=http://localhost:8877

@@ -20,7 +20,7 @@ fi
 curl -v -o template-tap-values.yml https://raw.githubusercontent.com/benwilcock/TAPonLAP/main/TAPonLAPv1.2/template-tap-values-nix-${TAP_PROFILE}.yml
 
 # Substitute the current environment variables into the template to create a tap-values.yml file
-prompt "Creating a tap-values.yml file using the current ENVIRONMENT variables."
+prompt "Prepare a tap-values.yml file using the current ENVIRONMENT variables."
 envsubst < template-tap-values.yml > tap-values.yml
 
 # Check your values before proceeding
@@ -52,7 +52,7 @@ yes_or_quit "Install Tanzu Application Platform (takes 30 mins or more, needs lo
 # Install Tanzu Application Platform
 tanzu package install tap -p tap.tanzu.vmware.com -v $TAP_VERSION \
   --values-file tap-values.yml \
-  --poll-timeout 60m \
+  --wait=false \
   --namespace $TAP_INSTALL_NAMESPACE
 
 # Watch the result of the installation
@@ -63,5 +63,3 @@ yes_or_no "Watch the Tanzu Application Platform reconciliation status?" && \
 yes_or_no "Delete the tap-values files (contain passwords & settings)?" && \
   rm tap-values.yml template-tap-values.yml
 
-# Finished
-prompt "You can now run the stage-5 script."

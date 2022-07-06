@@ -47,5 +47,3 @@ tanzu plugin list
 # Continue with the install?
 yes_or_quit "In the list above do the plugins: ${WHITE}package, secret, apps, services, and accelerator${YELLOW} have a status of 'installed'?"
 
-# Prompt to benin the next phase
-prompt "Next, run the stage-2 script."
