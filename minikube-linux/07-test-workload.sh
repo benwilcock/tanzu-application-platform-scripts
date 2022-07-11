@@ -21,15 +21,7 @@ RESPONSE="$(curl --silent http://tanzu-java-web-app.${TAP_DEV_NAMESPACE}.${APPS_
 message "Workload response: '${RESPONSE}'" 
 
 if [ "${RESPONSE}" = "Greetings from Spring Boot + Tanzu!" ]; then
-    message "\n${GREEN}Congratulations! Your work here is done!.${NC}";
+    message "\n${GREEN}Congratulations! Your workload has been deployed successfully!.${NC}";
 else
     message "\n${RED}Oops! Your work here is not done! ${WHITE}:(${NC}";
 fi 
-
-# Create a convenient GUIs file
-yes_or_no "Would you like a tap-guis.html file for this installation?" && \
-  envsubst < tap-guis-template.html > tap-guis.html
-
-# Open GUIs in chrome
-yes_or_no "Open the tap-guis.html file in Google Chrome?" && \
-  nohup google-chrome --disable-gpu tap-guis.html &>/dev/null

@@ -21,7 +21,7 @@ export MINIKUBE_MEM="32g"
 export MINIKUBE_CPUS="8"
 
 # Specify the version of TAP you wish to install
-export TAP_VERSION='1.2.0-build.18' #'1.1.1' # "1.1.0"
+export TAP_VERSION='1.2.0' #'1.1.1' # "1.1.0"
 
 # Specify the TAP profile (controls the tap-values.yml template choice)
 export TAP_PROFILE='full' # full, iterate, etc.

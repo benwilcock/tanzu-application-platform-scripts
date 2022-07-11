@@ -52,6 +52,7 @@ kubectl tree workload tanzu-java-web-app # Needs the 'Tree' plugin from Krew
 kubectl get clusterbuilder.kpack.io -o yaml
 kubectl get image.kpack.io <workload-name> -o yaml
 kubectl get build.kpack.io -o yaml
+kubectl get workload -o yaml
 
 # See what contour is proxying
 kubectl get proxy -A
