@@ -3,13 +3,12 @@ tanzu-cluster-essentials
 tanzu-cli
 .vscode/settings.json
 **/tap-env.sh
-**/*.yaml
 **/*secret*
 **/tanzu-cluster-essentials*
 **/tanzu-framework*
 **/tap-values*
-**/serviceaccounts.yml
-**/template-tap-values.yml
+**/serviceaccounts*
+**/template-tap-values*
 **/*.vsix
 **/*.gz
 **/*.zip

@@ -72,6 +72,22 @@ yes_or_no "Run Spring Pet Clinic App (from a Docker Image)?" \
   --namespace $TAP_DEV_NAMESPACE \
   --yes
 
+# Scaling Spring Sensors (publisher)
+yes_or_no "Scale up the Spring Sensors Publisher to 5?" \
+    && tanzu apps workload update spring-sensors-producer --annotation autoscaling.knative.dev/minScale=5
+
+
+# Create workload from local Dockerfile
+#tanzu apps workload create tanzu-java-web-app --local-path . --source-image index.docker.io/wilcockb200/tanzu-java-web-app-source --type web --param dockerfile=./Dockerfile --tail
+
+# Create workload from source code folder
+#tanzu apps workload create tanzu-java-web-app --local-path . --source-image index.docker.io/wilcockb200/tanzu-java-web-app-source --type web --tail
+
+# Create workload from local JAR/WAR
+#tanzu apps workload create tanzu-java-web-app --local-path target/demo-0.0.1-SNAPSHOT.jar --source-image index.docker.io/wilcockb200/tanzu-java-web-app-source --type web --tail
+
+# Create workload from a remote Docker image
+
 # Adding the host entries to the hosts file (needs sudo)
 # export ENVOY="$(minikube ip)"
 # export HOSTS="spring-boot-admin.${TAP_DEV_NAMESPACE}.${APPS_DOMAIN} spring-config-server.${TAP_DEV_NAMESPACE}.${APPS_DOMAIN} tanzu-java-web-app.${TAP_DEV_NAMESPACE}.${APPS_DOMAIN}"
@@ -84,4 +100,5 @@ yes_or_no "Run Spring Pet Clinic App (from a Docker Image)?" \
 # # Working with apps
 yes_or_no "Watch the Workloads become READY?" \
     && watch --color "tanzu apps workload list; echo -e 'When the workloads are ${GREEN}Ready${NC}, press Ctrl-C to exit.'"
+
 
