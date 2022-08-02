@@ -87,6 +87,7 @@ yes_or_no "Scale up the Spring Sensors Publisher to 5?" \
 #tanzu apps workload create tanzu-java-web-app --local-path target/demo-0.0.1-SNAPSHOT.jar --source-image index.docker.io/wilcockb200/tanzu-java-web-app-source --type web --tail
 
 # Create workload from a remote Docker image
+# tanzu apps workload create petclinic-image-to-url --image docker.io/benwilcock/spring-petclinic:2.6.0-SNAPSHOT --type web --label app.kubernetes.io/part-of=petclinic-image-to-url --annotation autoscaling.knative.dev/minScale=1 --namespace default --yes
 
 # Adding the host entries to the hosts file (needs sudo)
 # export ENVOY="$(minikube ip)"

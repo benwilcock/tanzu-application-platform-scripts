@@ -7,7 +7,7 @@
 
 # Source the environment variables
 source ./helper.sh
-export RMQ_INSTANCE="rmq-2"
+export RMQ_INSTANCE="rmq-1"
 export SERVICE_INSTANCES_NAMESPACE="service-instances"
 
 # Dexcribe the stage
@@ -52,6 +52,7 @@ yes_or_no "Run the Spring Sensors (Consumer) Workload?" \
   --label app.kubernetes.io/part-of=spring-sensors-rabbit \
   --annotation autoscaling.knative.dev/minScale=1 \
   --service-ref="rmq=services.apps.tanzu.vmware.com/v1alpha1:ResourceClaim:$RMQ_INSTANCE" \
+  --param gitops_ssh_secret \
   --yes 
 
 yes_or_no "Run the Spring Sensors (Producer) Workload?" \
