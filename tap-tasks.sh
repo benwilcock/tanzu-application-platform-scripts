@@ -89,3 +89,6 @@ qemu-img info /home/ben/.minikube/machines/${TAP_PROFILE}/${TAP_PROFILE}.rawdisk
 kubectl port-forward service/acc-server -n accelerator-system 8877:80 # API URL would be http://localhost:8877 or set ACC_SERVER_URL
 export TAP_LIVE_HOVER=true
 export ACC_SERVER_URL=http://localhost:8877
+
+# Switch namespaces
+kubens workloads

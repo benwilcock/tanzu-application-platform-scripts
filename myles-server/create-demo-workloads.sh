@@ -49,3 +49,15 @@ yes_or_no "Run the Spring Sensors (Producer) Workload?" \
         --param gitops_ssh_secret= \
         --namespace $TAP_DEV_NAMESPACE \
         --yes
+
+# docker rm minio
+
+# sudo docker run \
+#    -p 80:9000 \
+#    -p 9090:9090 \
+#    --name minio \
+#    -v ~/minio/data:/data \
+#    -e "MINIO_ROOT_USER=root" \
+#    -e "MINIO_ROOT_PASSWORD=password" \
+#    -e "MINIO_DOMAIN=192.168.0.20.nip.io" \
+#    quay.io/minio/minio server /data --console-address ":9090"
