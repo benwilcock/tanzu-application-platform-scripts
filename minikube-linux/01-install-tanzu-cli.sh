@@ -45,5 +45,5 @@ tanzu version
 tanzu plugin list
 
 # Continue with the install?
-yes_or_quit "In the list above do the plugins: ${WHITE}package, secret, apps, services, and accelerator${YELLOW} have a status of 'installed'?"
+yes_or_quit "In the list above do the plugins: ${WHITE}package, secret, apps, services, insight, and accelerator${YELLOW} have a status of 'installed'?"
 

@@ -4,25 +4,25 @@ source ./helper.sh
 
 check_for_vpn
 
-kubectl vsphere login --insecure-skip-tls-verify \
- --server=$VSPHERE_SERVER \
- -u $VSPHERE_USER \
- --tanzu-kubernetes-cluster-name tap-view
+# kubectl vsphere login --insecure-skip-tls-verify \
+#  --server=$VSPHERE_SERVER \
+#  -u $VSPHERE_USER \
+#  --tanzu-kubernetes-cluster-name tap-view
 
-kubectl vsphere login --insecure-skip-tls-verify \
- --server=$VSPHERE_SERVER \
- -u $VSPHERE_USER \
- --tanzu-kubernetes-cluster-name tap-build
+# kubectl vsphere login --insecure-skip-tls-verify \
+#  --server=$VSPHERE_SERVER \
+#  -u $VSPHERE_USER \
+#  --tanzu-kubernetes-cluster-name tap-build
 
-kubectl vsphere login --insecure-skip-tls-verify \
- --server=$VSPHERE_SERVER \
- -u $VSPHERE_USER \
- --tanzu-kubernetes-cluster-name tap-run
+# kubectl vsphere login --insecure-skip-tls-verify \
+#  --server=$VSPHERE_SERVER \
+#  -u $VSPHERE_USER \
+#  --tanzu-kubernetes-cluster-name tap-run
 
-kubectl vsphere login --insecure-skip-tls-verify \
- --server=$VSPHERE_SERVER \
- -u $VSPHERE_USER \
- --tanzu-kubernetes-cluster-name tap-run-2
+# kubectl vsphere login --insecure-skip-tls-verify \
+#  --server=$VSPHERE_SERVER \
+#  -u $VSPHERE_USER \
+#  --tanzu-kubernetes-cluster-name tap-run-2
 
 kubectl vsphere login --insecure-skip-tls-verify \
  --server=$VSPHERE_SERVER \
@@ -31,6 +31,9 @@ kubectl vsphere login --insecure-skip-tls-verify \
 
 yes_or_no "Switch Kubectl's context to $TARGET_CLUSTER?" && \
  kubectx $TARGET_CLUSTER
+
+yes_or_no "Switch default namespace to $TAP_DEV_NAMESPACE" && \
+kubens $TAP_DEV_NAMESPACE
 
 yes_or_no "Open the TAP GUI in Google Chrome?" && \
  nohup google-chrome --disable-gpu $TAP_GUI_URL  &>/dev/null

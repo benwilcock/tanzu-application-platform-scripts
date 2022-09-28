@@ -3,7 +3,7 @@
 ############## Common Environment Variables #######################
 
 # Specify the name of the VPN that must be active
-export VPN_NAME='VMware Global Protect'
+export VPN_NAME='VMware'
 
 # Specify the Kubernetes namespace to use as your developer workspace.
 export TAP_DEV_NAMESPACE="default" 

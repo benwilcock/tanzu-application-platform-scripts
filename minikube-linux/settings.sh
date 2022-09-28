@@ -36,7 +36,7 @@ export BUILDSERVICE_TYPE='lite'
 export SUPPLY_CHAIN_TYPE='basic'
 
 # Specify the version of the Tanzu CLI being installed
-export TANZU_CLI_VERSION="v0.11.6" # This is a folder path used by the installer.
+export TANZU_CLI_VERSION="v0.25.0" # This is a folder path used by the installer.
 
 # Specify the location of the Tanzu Network container registry containing the TAP images (usually fixed)
 export INSTALL_REGISTRY_HOSTNAME="registry.tanzu.vmware.com" 
