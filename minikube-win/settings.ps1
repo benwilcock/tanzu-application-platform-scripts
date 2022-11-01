@@ -11,7 +11,7 @@ $Env:PWD = pwd
 $Env:TANZU_CLI_NO_INIT = "true" 
 
 # Tanzu CLI Version
-$Env:TANZU_CLI_VERSION = "v0.11.2"
+$Env:TANZU_CLI_VERSION = "v0.25.0"
 
 # Choose where Built container images will go...
 $Env:REPOSITORY_TYPE = "dockerhub" # One of "dockerhub" "harbor" "local"
