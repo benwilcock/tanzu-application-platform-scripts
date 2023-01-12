@@ -14,3 +14,21 @@ spec:
   type: service
   lifecycle: experimental
   owner: default-team
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: dotnet-aspcore
+  description: .Net Core ASP Sample App
+  tags:
+    - dotnet
+    - aspcore
+    - tanzu
+  annotations:
+    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=dotnet-aspcore'
+spec:
+  type: service
+  lifecycle: experimental
+  owner: default-team
