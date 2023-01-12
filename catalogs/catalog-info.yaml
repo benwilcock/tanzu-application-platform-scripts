@@ -106,7 +106,7 @@ spec:
   profile:
     displayName: Ben Wilcock
     email: ben@example.com
-    picture: https://example.com/staff/jenny-with-party-hat.jpeg
+    picture: https://tanzu.vmware.com/developer/team/ben-wilcock/images/ben-wilcock.jpg
   memberOf: [tanzu-tmm]
 
 ---
@@ -118,7 +118,7 @@ spec:
   profile:
     displayName: Myles Gray
     email: myles@example.com
-    picture: https://example.com/staff/jenny-with-party-hat.jpeg
+    picture: https://tanzu.vmware.com/developer/team/myles-gray/images/myles-gray.jpg
   memberOf: [tanzu-tmm]
 
 ---
@@ -132,6 +132,5 @@ spec:
   profile:
     displayName: Tanzu Technical Marketing
     email: tmm@example.com
-    picture: https://example.com/groups/bu-infrastructure.jpeg
   children: []
   members: [wilcockb]
