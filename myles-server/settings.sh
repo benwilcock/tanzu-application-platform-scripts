@@ -14,4 +14,3 @@ export TARGET_CLUSTER="tap-ga"
 # Specify the URL to open after connecting 
 export TAP_GUI_URL="http://tap-gui.tap.labs.satm.eng.vmware.com/"
 
-
