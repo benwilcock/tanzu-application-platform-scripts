@@ -99,6 +99,20 @@ spec:
 
 ---
 apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: tanzu-tmm
+  description: The Tanzu Application Platform Technical Marketing Team
+spec:
+  type: team
+  profile:
+    displayName: Tanzu Technical Marketing
+    email: tmm@example.com
+  children: []
+  members: [wilcockb]
+
+---
+apiVersion: backstage.io/v1alpha1
 kind: User
 metadata:
   name: wilcockb
@@ -123,14 +137,36 @@ spec:
 
 ---
 apiVersion: backstage.io/v1alpha1
-kind: Group
+kind: User
 metadata:
-  name: tanzu-tmm
-  description: The Tanzu Application Platform Technical Marketing Team
+  name: artf
 spec:
-  type: team
   profile:
-    displayName: Tanzu Technical Marketing
-    email: tmm@example.com
-  children: []
-  members: [wilcockb]
+    displayName: Art Fewell
+    email: artf@example.com
+    picture: https://tanzu.vmware.com/developer/team/art-fewell/images/art-fewell.jpg
+  memberOf: [tanzu-tmm]
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: nickk
+spec:
+  profile:
+    displayName: Nick Kuhn
+    email: nickk@example.com
+    picture: https://tanzu.vmware.com/developer/team/nick-kuhn/images/nick-kuhn.jpg
+  memberOf: [tanzu-tmm]
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: klee
+spec:
+  profile:
+    displayName: Keith Lee
+    email: klee@example.com
+    picture: https://images.apps-cloudmgmt.techzone.vmware.com/sites/default/files/pictures/KL_profile_220x220.jpg
+  memberOf: [tanzu-tmm]
