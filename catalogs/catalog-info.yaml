@@ -1,0 +1,125 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: node-express
+  description: Node Express Sample App
+  tags:
+    - app-accelerator
+    - node
+    - express
+    - REST
+    - webpage
+    - tanzu
+  annotations:
+    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=node-express'
+spec:
+  type: service
+  lifecycle: production
+  owner: default-team
+  system: polyglot-demo-apps
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: dotnet-aspcore
+  description: .Net Core ASP Sample App
+  tags:
+    - dotnet
+    - aspcore
+    - REST
+    - webpage
+    - tanzu
+  annotations:
+    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=dotnet-aspcore'
+spec:
+  type: service
+  lifecycle: production
+  owner: default-team
+  system: polyglot-demo-apps
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: springboot-maven
+  description: Spring Boot Sample App
+  tags:
+    - springboot
+    - maven
+    - REST
+    - webpage
+    - tanzu
+  annotations:
+    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=springboot-maven'
+spec:
+  type: service
+  lifecycle: production
+  owner: default-team
+  system: polyglot-demo-apps
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: python-pipenv
+  description: Python Flask Sample App
+  tags:
+    - python
+    - flask
+    - REST
+    - webpage
+    - tanzu
+  annotations:
+    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=python-pipenv'
+spec:
+  type: service
+  lifecycle: production
+  owner: default-team
+  system: polyglot-demo-apps
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: polyglot-demo-apps
+  description: A set of technology demonstrator projects that offer similar experiences using multiple programming languages.
+spec:
+  owner: default-team
+  domain: polyglot-demos
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: polyglot-demos
+  description: Apps in many languages supported by TAP
+spec:
+  owner: default-team
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: wilcockb
+spec:
+  profile:
+    displayName: Ben Wilcock
+    email: ben@example.com
+    picture: https://example.com/staff/jenny-with-party-hat.jpeg
+  memberOf: [tanzu-tmm]
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: tanzu-tmm
+  description: The Tanzu Application Platform Technical Marketing Team
+spec:
+  type: team
+  profile:
+    displayName: Tanzu Technical Marketing
+    email: tmm@example.com
+    picture: https://example.com/groups/bu-infrastructure.jpeg
+  children: []
+  members: [wilcockb]
