@@ -15,7 +15,7 @@ metadata:
 spec:
   type: service
   lifecycle: production
-  owner: default-team
+  owner: tanzu-tmm
   system: polyglot-demo-apps
 
 ---
@@ -35,7 +35,7 @@ metadata:
 spec:
   type: service
   lifecycle: production
-  owner: default-team
+  owner: tanzu-tmm
   system: polyglot-demo-apps
 
 ---
@@ -55,7 +55,7 @@ metadata:
 spec:
   type: service
   lifecycle: production
-  owner: default-team
+  owner: tanzu-tmm
   system: polyglot-demo-apps
 
 ---
@@ -75,7 +75,7 @@ metadata:
 spec:
   type: service
   lifecycle: production
-  owner: default-team
+  owner: tanzu-tmm
   system: polyglot-demo-apps
 
 ---
@@ -85,7 +85,7 @@ metadata:
   name: polyglot-demo-apps
   description: A set of technology demonstrator projects that offer similar experiences using multiple programming languages.
 spec:
-  owner: default-team
+  owner: tanzu-tmm
   domain: polyglot-demos
 
 ---
@@ -95,7 +95,7 @@ metadata:
   name: polyglot-demos
   description: Apps in many languages supported by TAP
 spec:
-  owner: default-team
+  owner: tanzu-tmm
 
 ---
 apiVersion: backstage.io/v1alpha1
@@ -106,6 +106,18 @@ spec:
   profile:
     displayName: Ben Wilcock
     email: ben@example.com
+    picture: https://example.com/staff/jenny-with-party-hat.jpeg
+  memberOf: [tanzu-tmm]
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: mylesg
+spec:
+  profile:
+    displayName: Myles Gray
+    email: myles@example.com
     picture: https://example.com/staff/jenny-with-party-hat.jpeg
   memberOf: [tanzu-tmm]
 
