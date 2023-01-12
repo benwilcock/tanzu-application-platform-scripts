@@ -106,7 +106,7 @@ metadata:
 spec:
   type: team
   profile:
-    displayName: Tanzu Technical Marketing
+    displayName: Tanzu Technical Marketing Team
     email: tmm@example.com
   children: []
   members: [wilcockb]
