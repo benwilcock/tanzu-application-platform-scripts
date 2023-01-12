@@ -119,7 +119,7 @@ metadata:
 spec:
   profile:
     displayName: Ben Wilcock
-    email: ben@example.com
+    email: benw@example.com
     picture: https://tanzu.vmware.com/developer/team/ben-wilcock/images/ben-wilcock.jpg
   memberOf: [tanzu-tmm]
 
@@ -131,7 +131,7 @@ metadata:
 spec:
   profile:
     displayName: Myles Gray
-    email: myles@example.com
+    email: mylesg@example.com
     picture: https://tanzu.vmware.com/developer/team/myles-gray/images/myles-gray.jpg
   memberOf: [tanzu-tmm]
 
