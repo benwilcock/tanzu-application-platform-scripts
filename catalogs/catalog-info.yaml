@@ -7,7 +7,7 @@ metadata:
     - app-accelerator
     - node
     - express
-    - REST
+    - rest
     - webpage
     - tanzu
   annotations:
@@ -27,7 +27,7 @@ metadata:
   tags:
     - dotnet
     - aspcore
-    - REST
+    - rest
     - webpage
     - tanzu
   annotations:
@@ -47,7 +47,7 @@ metadata:
   tags:
     - springboot
     - maven
-    - REST
+    - rest
     - webpage
     - tanzu
   annotations:
@@ -67,7 +67,7 @@ metadata:
   tags:
     - python
     - flask
-    - REST
+    - rest
     - webpage
     - tanzu
   annotations:
