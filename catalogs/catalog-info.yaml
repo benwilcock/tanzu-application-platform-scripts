@@ -80,6 +80,25 @@ spec:
 
 ---
 apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: tanzu-java-web-app
+  description: Tanzu Accelerator Sample App Using Java & Spring
+  tags:
+    - java
+    - spring
+    - rest
+    - tanzu
+  annotations:
+    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=tanzu-java-web-app'
+spec:
+  type: service
+  lifecycle: production
+  owner: mambg-tmm-team
+  system: polyglot-demo-apps
+
+---
+apiVersion: backstage.io/v1alpha1
 kind: System
 metadata:
   name: polyglot-demo-apps
