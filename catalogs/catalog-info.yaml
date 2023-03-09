@@ -15,7 +15,7 @@ metadata:
 spec:
   type: service
   lifecycle: production
-  owner: tanzu-tmm
+  owner: mambg-tmm-team
   system: polyglot-demo-apps
 
 ---
@@ -35,7 +35,7 @@ metadata:
 spec:
   type: service
   lifecycle: production
-  owner: tanzu-tmm
+  owner: mambg-tmm-team
   system: polyglot-demo-apps
 
 ---
@@ -55,7 +55,7 @@ metadata:
 spec:
   type: service
   lifecycle: production
-  owner: tanzu-tmm
+  owner: mambg-tmm-team
   system: polyglot-demo-apps
 
 ---
@@ -75,7 +75,7 @@ metadata:
 spec:
   type: service
   lifecycle: production
-  owner: tanzu-tmm
+  owner: mambg-tmm-team
   system: polyglot-demo-apps
 
 ---
@@ -85,7 +85,7 @@ metadata:
   name: polyglot-demo-apps
   description: A set of technology demonstrator projects that offer similar experiences using multiple programming languages.
 spec:
-  owner: tanzu-tmm
+  owner: mambg-tmm-team
   domain: polyglot-demos
 
 ---
@@ -95,7 +95,7 @@ metadata:
   name: polyglot-demos
   description: Apps in many languages supported by TAP
 spec:
-  owner: tanzu-tmm
+  owner: mambg-tmm-team
 
 ---
 apiVersion: backstage.io/v1alpha1
@@ -121,7 +121,7 @@ spec:
     displayName: Ben Wilcock
     email: benw@example.com
     picture: https://tanzu.vmware.com/developer/team/ben-wilcock/images/ben-wilcock.jpg
-  memberOf: [tanzu-tmm]
+  memberOf: [mambg-tmm-team]
 
 ---
 apiVersion: backstage.io/v1alpha1
@@ -133,7 +133,7 @@ spec:
     displayName: Myles Gray
     email: mylesg@example.com
     picture: https://tanzu.vmware.com/developer/team/myles-gray/images/myles-gray.jpg
-  memberOf: [tanzu-tmm]
+  memberOf: [mambg-tmm-team]
 
 ---
 apiVersion: backstage.io/v1alpha1
@@ -145,7 +145,7 @@ spec:
     displayName: Art Fewell
     email: artf@example.com
     picture: https://tanzu.vmware.com/developer/team/art-fewell/images/art-fewell.jpg
-  memberOf: [tanzu-tmm]
+  memberOf: [mambg-tmm-team]
 
 ---
 apiVersion: backstage.io/v1alpha1
@@ -157,7 +157,7 @@ spec:
     displayName: Nick Kuhn
     email: nickk@example.com
     picture: https://tanzu.vmware.com/developer/team/nick-kuhn/images/nick-kuhn.jpg
-  memberOf: [tanzu-tmm]
+  memberOf: [mambg-tmm-team]
 
 ---
 apiVersion: backstage.io/v1alpha1
@@ -169,4 +169,4 @@ spec:
     displayName: Keith Lee
     email: klee@example.com
     picture: https://images.apps-cloudmgmt.techzone.vmware.com/sites/default/files/pictures/KL_profile_220x220.jpg
-  memberOf: [tanzu-tmm]
+  memberOf: [mambg-tmm-team]
