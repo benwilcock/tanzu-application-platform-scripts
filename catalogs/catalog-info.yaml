@@ -97,76 +97,76 @@ metadata:
 spec:
   owner: mambg-tmm-team
 
----
-apiVersion: backstage.io/v1alpha1
-kind: Group
-metadata:
-  name: mambg-tmm-team
-  description: The Tanzu Application Platform Technical Marketing Team
-spec:
-  type: team
-  profile:
-    displayName: Tanzu Technical Marketing Team
-    email: tmm@example.com
-  children: []
-  members: [wilcockb,nickk,artf,klee]
+# ---
+# apiVersion: backstage.io/v1alpha1
+# kind: Group
+# metadata:
+#   name: mambg-tmm-team
+#   description: The Tanzu Application Platform Technical Marketing Team
+# spec:
+#   type: team
+#   profile:
+#     displayName: Tanzu Technical Marketing Team
+#     email: tmm@example.com
+#   children: []
+#   members: [wilcockb,nickk,artf,klee]
 
----
-apiVersion: backstage.io/v1alpha1
-kind: User
-metadata:
-  name: wilcockb
-spec:
-  profile:
-    displayName: Ben Wilcock
-    email: benw@example.com
-    picture: https://tanzu.vmware.com/developer/team/ben-wilcock/images/ben-wilcock.jpg
-  memberOf: [mambg-tmm-team]
+# ---
+# apiVersion: backstage.io/v1alpha1
+# kind: User
+# metadata:
+#   name: wilcockb
+# spec:
+#   profile:
+#     displayName: Ben Wilcock
+#     email: benw@example.com
+#     picture: https://tanzu.vmware.com/developer/team/ben-wilcock/images/ben-wilcock.jpg
+#   memberOf: [mambg-tmm-team]
 
----
-apiVersion: backstage.io/v1alpha1
-kind: User
-metadata:
-  name: mylesg
-spec:
-  profile:
-    displayName: Myles Gray
-    email: mylesg@example.com
-    picture: https://tanzu.vmware.com/developer/team/myles-gray/images/myles-gray.jpg
-  memberOf: [mambg-tmm-team]
+# ---
+# apiVersion: backstage.io/v1alpha1
+# kind: User
+# metadata:
+#   name: mylesg
+# spec:
+#   profile:
+#     displayName: Myles Gray
+#     email: mylesg@example.com
+#     picture: https://tanzu.vmware.com/developer/team/myles-gray/images/myles-gray.jpg
+#   memberOf: [mambg-tmm-team]
 
----
-apiVersion: backstage.io/v1alpha1
-kind: User
-metadata:
-  name: artf
-spec:
-  profile:
-    displayName: Art Fewell
-    email: artf@example.com
-    picture: https://tanzu.vmware.com/developer/team/art-fewell/images/art-fewell.jpg
-  memberOf: [mambg-tmm-team]
+# ---
+# apiVersion: backstage.io/v1alpha1
+# kind: User
+# metadata:
+#   name: artf
+# spec:
+#   profile:
+#     displayName: Art Fewell
+#     email: artf@example.com
+#     picture: https://tanzu.vmware.com/developer/team/art-fewell/images/art-fewell.jpg
+#   memberOf: [mambg-tmm-team]
 
----
-apiVersion: backstage.io/v1alpha1
-kind: User
-metadata:
-  name: nickk
-spec:
-  profile:
-    displayName: Nick Kuhn
-    email: nickk@example.com
-    picture: https://tanzu.vmware.com/developer/team/nick-kuhn/images/nick-kuhn.jpg
-  memberOf: [mambg-tmm-team]
+# ---
+# apiVersion: backstage.io/v1alpha1
+# kind: User
+# metadata:
+#   name: nickk
+# spec:
+#   profile:
+#     displayName: Nick Kuhn
+#     email: nickk@example.com
+#     picture: https://tanzu.vmware.com/developer/team/nick-kuhn/images/nick-kuhn.jpg
+#   memberOf: [mambg-tmm-team]
 
----
-apiVersion: backstage.io/v1alpha1
-kind: User
-metadata:
-  name: klee
-spec:
-  profile:
-    displayName: Keith Lee
-    email: klee@example.com
-    picture: https://images.apps-cloudmgmt.techzone.vmware.com/sites/default/files/pictures/KL_profile_220x220.jpg
-  memberOf: [mambg-tmm-team]
+# ---
+# apiVersion: backstage.io/v1alpha1
+# kind: User
+# metadata:
+#   name: klee
+# spec:
+#   profile:
+#     displayName: Keith Lee
+#     email: klee@example.com
+#     picture: https://images.apps-cloudmgmt.techzone.vmware.com/sites/default/files/pictures/KL_profile_220x220.jpg
+#   memberOf: [mambg-tmm-team]
