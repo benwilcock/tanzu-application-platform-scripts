@@ -101,7 +101,7 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: Group
 metadata:
-  name: tanzu-tmm
+  name: mambg-tmm-team
   description: The Tanzu Application Platform Technical Marketing Team
 spec:
   type: team
@@ -109,7 +109,7 @@ spec:
     displayName: Tanzu Technical Marketing Team
     email: tmm@example.com
   children: []
-  members: [wilcockb]
+  members: [wilcockb,nickk,artf,klee]
 
 ---
 apiVersion: backstage.io/v1alpha1
